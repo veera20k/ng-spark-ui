@@ -15,8 +15,7 @@ import { AccordionDirective } from '../../../core/directives/accordion.directive
     </p>
 
     <h2 class="font-semibold">FNAQ - (Frequently Not Asked Questions : | )</h2>
-
-    <div [flashAccordion]="'single'">
+    <div flashAccordion  mode='single'>
       <flash-accordion-item>
         <h2 class="mt-3" slot="trigger">What is Flash UI?</h2>
         <p class="my-1" slot="content">

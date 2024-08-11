@@ -6,7 +6,7 @@ import { AccordionItemComponent } from '../../components/ui/accoridon-item/accor
   standalone: true,
 })
 export class AccordionDirective implements AfterContentInit {
-  mode = input<'single' | 'multiple'>('single', {alias: 'flashAccordion'});
+  mode = input<'single' | 'multiple'>('single');
   @ContentChildren(AccordionItemComponent) items!: QueryList<AccordionItemComponent>;
 
   ngAfterContentInit() {

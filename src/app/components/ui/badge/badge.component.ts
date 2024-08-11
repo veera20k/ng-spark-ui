@@ -1,15 +1,13 @@
-import { Component, computed, Host, HostBinding, input } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { Component, computed, HostBinding, input } from '@angular/core';
 import { BadgeVariant } from '../../../core/models/common.model';
 @Component({
   selector: 'flash-badge',
   standalone: true,
-  template: ` <ng-content/>`,
+  template: `<ng-content/>`,
   host: {
     class:
-      'inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 gap-1 cursor-pointer',
+      'inline-flex items-center rounded-md border px-2 py-0.5 text-xs transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 gap-1 cursor-pointer',
   },
-  imports: [FontAwesomeModule],
 })
 export class BadgeComponent {
   varient = input<BadgeVariant>('primary');

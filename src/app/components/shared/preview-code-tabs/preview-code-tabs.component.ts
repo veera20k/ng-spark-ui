@@ -10,7 +10,7 @@ import { HighlighterComponent } from '../highlighter/highlighter.component';
   selector: 'flash-preview-code-tabs',
   template: `
     <flash-tab
-      [smartItems]="[{title: 'preview'}, {title: 'ts'}, {title: 'html'}]"
+      [smartItems]="[{title: 'preview'}, {title: 'ts'}]"
       (onTabeSwitch)="onTabeSwitch($event)"
     >
       <div class="border p-3 mt-7 relative">
@@ -30,16 +30,6 @@ import { HighlighterComponent } from '../highlighter/highlighter.component';
           @case('ts') {
             <flash-highlighter language="javascript">
               <ng-content select="[slot=ts]" />
-            </flash-highlighter>
-          }
-          @case('html') {
-            <flash-highlighter language="html">
-              <ng-content select="[slot=html]" />
-            </flash-highlighter>
-          }
-          @case('css') {
-            <flash-highlighter language="css">
-              <ng-content select="[slot=css]" />
             </flash-highlighter>
           }
         }

@@ -25,7 +25,6 @@ import { BreadcrumbComponent } from '../../ui/breadcrumb/breadcrumb.component';
     </flash-badge>
     <br />
     <br />
-    <br />
   `,
   imports: [BadgeComponent, FontAwesomeModule, BreadcrumbComponent],
 })
