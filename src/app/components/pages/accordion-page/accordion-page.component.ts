@@ -5,7 +5,7 @@ import { AccordionItemComponent } from '../../ui/accoridon-item/accordion-item.c
 import { AccordionDirective } from '../../../core/directives/accordion.directive';
 import { BadgeComponent } from '../../ui/badge/badge.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
-import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-common.component";
+import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
 
 @Component({
   selector: 'flash-accordion-page',
@@ -13,7 +13,7 @@ import { InstallationWrapComponent } from "../../shared/instllation-wrap/install
   template: `
     <flash-page-header
       title="Accordion"
-      description="An accordion is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail image."
+      description="The Accordion component organizes content into expandable sections, allowing users to toggle visibility by clicking on headers. It supports multiple or single item expansion"
     ></flash-page-header>
     <flash-preview-code-tabs>
       <div flashAccordion mode="single" slot="preview">
@@ -37,19 +37,45 @@ import { InstallationWrapComponent } from "../../shared/instllation-wrap/install
         </flash-accordion-item>
       </div>
       <ng-container slot="Ts">
-        {{ defaultTs }}
+        {{ currentTs }}
       </ng-container>
     </flash-preview-code-tabs>
-    <flash-installation-common/>
-    <flash-installation-step [stepNumber]="2" [code]="accodrionItem">
-      <code slot="title">Create file like <span class="underline">accordion-item.component.ts</span> and copy and paste the following code into your components folder.</code>
+    <flash-installation-wrap >
+    <flash-installation-step [stepNumber]="2">
+      <code slot="title"
+        >Copy accordion-item.component.ts
+        <a
+          class="hover:underline text-blue-500"
+          href="https://github.com/veera20k/flash-ui/blob/main/src/app/components/ui/accoridon-item/accordion-item.component.ts"
+          target="_blank"
+          >here</a
+        >
+        and copy and paste the following code into your components folder.</code
+      >
     </flash-installation-step>
-    <flash-installation-step [stepNumber]="3" [code]="accodrionDirective">
-      <code slot="title">Create file <span class="underline">accordion.directive.ts</span> into your directives folder and copy and paste the following code into your components folder.</code>
+    <flash-installation-step [stepNumber]="3">
+    <code slot="title"
+        >Copy accordion.directive.ts
+        <a
+          class="hover:underline text-blue-500"
+          href="https://github.com/veera20k/flash-ui/blob/main/src/app/core/directives/accordion.directive.ts"
+          target="_blank"
+          >here</a
+        >
+        and copy and paste the following code into your directives folder.</code
+      >
     </flash-installation-step>
-    <flash-installation-step [stepNumber]="4" [code]="accordionCss" [language]="'css'">
-      <code slot="title">Copy and past this css into your <span class="underline">styles.css</span> file.</code>
+    <flash-installation-step
+      [stepNumber]="4"
+      [code]="accordionCss"
+      [language]="'css'"
+    >
+      <code slot="title"
+        >Copy and past this css into your
+        <span class="underline">styles.css</span> file.</code
+      >
     </flash-installation-step>
+  </flash-installation-wrap>
   `,
   imports: [
     PageHeaderComponent,
@@ -58,11 +84,11 @@ import { InstallationWrapComponent } from "../../shared/instllation-wrap/install
     AccordionDirective,
     InstallationStepComponent,
     BadgeComponent,
-    InstallationWrapComponent
-],
+    InstallationWrapComponent,
+  ],
 })
 export class AccordionPageComponent {
-  defaultTs = `
+  currentTs = `
     // accordion-demo.component.ts
     import { Component } from '@angular/core';
     import { AccordionItemComponent } from './accordion-item/accordion-item.component';
@@ -109,93 +135,4 @@ export class AccordionPageComponent {
     grid-template-rows: 1fr;
   }`;
 
-  accodrionItem = `
-  import { NgClass } from '@angular/common';
-  import {
-    Component,
-    input,
-    output,
-    signal,
-  } from '@angular/core';
-  import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-  import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown';
-
-  @Component({
-    selector: 'flash-accordion-item',
-    standalone: true,
-    template: 
-    \`\<div class="border-b w-full rounded-md">
-        <div class="flex justify-between px-4 py-3 cursor-pointer" 
-          (click)="toggle(!isOpen())">
-          <ng-content select="[slot=trigger]" />
-          <fa-icon
-            [icon]="faChevronDown"
-            class="fa-sm transition-all"
-            [ngClass]="isOpen() ? 'rotate-180' : ''"
-          ></fa-icon>
-        </div>
-        <div class="accordion-body" [ngClass]="isOpen() ? 'accordion-open' : ''">
-          <section class="overflow-hidden">
-            <div class="m-3 pl-4">
-              <ng-content select="[slot=content]" />
-            </div>
-          </section>
-        </div>
-      </div>
-    \`\,
-    host: {
-      class: 'contents',
-    },
-    imports: [FontAwesomeModule, NgClass],
-  })
-  export class AccordionItemComponent {
-    isOpen = signal(false);
-    toggleEvent = output<boolean>();
-    alwaysOpen = input(false);
-
-    faChevronDown = faChevronDown;
-
-    ngOnInit(): void {
-      if (this.alwaysOpen()) {
-        this.isOpen.set(true);
-      }
-    }
-
-    toggle(isOpen: boolean) {
-      if (!this.alwaysOpen()) {
-        this.isOpen.set(isOpen);
-        this.toggleEvent.emit(isOpen);
-      }
-    }
-  }`;
-  accodrionDirective = `
-  import { Directive, Input, ContentChildren, QueryList, AfterContentInit, input } from '@angular/core';
-  import { AccordionItemComponent } from '../../components/ui/accoridon-item/accordion-item.component';
-
-  @Directive({
-    selector: '[flashAccordion]',
-    standalone: true,
-  })
-  export class AccordionDirective implements AfterContentInit {
-    mode = input<'single' | 'multiple'>('single');
-    @ContentChildren(AccordionItemComponent) items!: QueryList<AccordionItemComponent>;
-
-    ngAfterContentInit() {
-      this.items.forEach((item, index) => {
-        item.toggleEvent.subscribe((isOpen: boolean) => {
-          this.onToggle(index);
-        });
-      });
-    }
-
-    onToggle(index: number) {
-      if (this.mode() === 'single') {
-        this.items.forEach((item, i) => {
-          if (i !== index) {
-            item.isOpen.set(false);
-          }
-        });
-      }
-    }
-  }`;
 }

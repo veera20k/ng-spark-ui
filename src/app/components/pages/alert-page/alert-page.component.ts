@@ -4,7 +4,7 @@ import { AlertComponent } from '../../ui/alert/alert.component';
 import { PageHeaderComponent } from '../page-header/page-header.component';
 import { faTerminal } from '@fortawesome/free-solid-svg-icons/faTerminal';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-common.component';
+import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
 
 @Component({
@@ -27,7 +27,7 @@ import { InstallationStepComponent } from '../../shared/installation-step/instal
         {{ demoTs }}
       </ng-container>
     </flash-preview-code-tabs>
-    <flash-installation-common />
+    <flash-installation-wrap />
     <flash-installation-step [stepNumber]="2" [code]="componet">
       <code slot="title"
         >Create file <span class="underline">alert.component.ts</span> and copy

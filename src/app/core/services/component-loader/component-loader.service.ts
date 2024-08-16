@@ -5,9 +5,7 @@ import {
   inject,
   Injectable,
   Injector,
-  Renderer2,
   TemplateRef,
-  ViewContainerRef,
 } from '@angular/core';
 import { DialogOptions } from '../../models/dialog-options.model';
 import { ModalBaseComponent } from '../../../components/ui/base/modal-base/modal-base.component';
@@ -37,7 +35,8 @@ export class ComponentLoaderService {
       this.options.push(options);
       ref.setInput('options', Object.assign(ref.instance.options, options));
     }
-    if (!options?.disableScroll) {
+
+    if (options?.disableScroll !== false) {
       this.disableScroll();
     }
     ref.instance.closeEvent.subscribe(() => {

@@ -15,15 +15,6 @@ import { BreadcrumbComponent } from '../../ui/breadcrumb/breadcrumb.component';
   </flash-breadcrumb>
     <h1 class="font-bold text-3xl my-3">{{ title() }}</h1>
     <p class="mb-3 text-gray-600">{{ description() }}</p>
-    <flash-badge varient="secondary">
-      Badge
-      <fa-icon [icon]="faArrowUpRightFromSquare" class="fa-sm"></fa-icon>
-    </flash-badge>
-    <flash-badge class="ml-2" varient="secondary">
-      Api Reference
-      <fa-icon [icon]="faArrowUpRightFromSquare" class="fa-sm"></fa-icon>
-    </flash-badge>
-    <br />
     <br />
   `,
   imports: [BadgeComponent, FontAwesomeModule, BreadcrumbComponent],

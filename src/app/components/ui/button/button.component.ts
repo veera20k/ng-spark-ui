@@ -1,5 +1,4 @@
 import { Component, computed, input, output } from '@angular/core';
-import { ButtonBaseComponent } from '../base/button-base/button-base.component';
 import { ButtonVariant } from '../../../core/models/common.model';
 import { NgClass } from '@angular/common';
 
@@ -7,11 +6,17 @@ import { NgClass } from '@angular/common';
   selector: 'flash-button',
   standalone: true,
   template: `
-    <button flashButton [disabled]="disabled()" [ngClass]="buttonClass()" (click)="clickEvent.emit($event)">
-      <ng-content/>
+    <button
+      class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input h-10 px-4 py-2"
+      type="button"
+      [disabled]="disabled()"
+      [ngClass]="buttonClass()"
+      (click)="clickEvent.emit($event)"
+    >
+      <ng-content />
     </button>
   `,
-  imports: [ButtonBaseComponent, NgClass],
+  imports: [NgClass],
 })
 export class ButtonComponent {
   disabled = input(false);

@@ -4,7 +4,7 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight
 import { PageHeaderComponent } from "../page-header/page-header.component";
 import { PreviewCodeTabsComponent } from "../../shared/preview-code-tabs/preview-code-tabs.component";
 import { BreadcrumbComponent } from "../../ui/breadcrumb/breadcrumb.component";
-import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-common.component";
+import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-wrap.component";
 import { InstallationStepComponent } from "../../shared/installation-step/installation-step.component";
 
 @Component({
@@ -22,10 +22,10 @@ import { InstallationStepComponent } from "../../shared/installation-step/instal
         </ng-template>
       </flash-breadcrumb>
       <ng-container slot="ts">
-        {{defaultTs}}
+        {{currentTs}}
       </ng-container>
     </flash-preview-code-tabs>
-    <flash-installation-common/>
+    <flash-installation-wrap/>
     <flash-installation-step [stepNumber]="2" [code]="component">
       <code slot="title"
         >Create file <span class="underline">breadcrumb.component.ts</span> and copy
@@ -38,7 +38,7 @@ import { InstallationStepComponent } from "../../shared/installation-step/instal
 export class BreadcrumbPageComponent {
   faChevronRight = faChevronRight;
 
-  defaultTs = `
+  currentTs = `
   import { Component } from "@angular/core";
   import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
   import { faChevronRight } from "@fortawesome/free-solid-svg-icons/faChevronRight";

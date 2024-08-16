@@ -35,6 +35,9 @@ import { HighlighterComponent } from '../highlighter/highlighter.component';
       }
     `,
   ],
+  host: {
+    class: 'relative',
+  },
   standalone: true,
   imports: [HighlighterComponent],
 })

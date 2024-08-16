@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { PageHeaderComponent } from "../page-header/page-header.component";
 import { PreviewCodeTabsComponent } from "../../shared/preview-code-tabs/preview-code-tabs.component";
 import { ButtonComponent } from "../../ui/button/button.component";
-import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-common.component";
+import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-wrap.component";
 import { InstallationStepComponent } from "../../shared/installation-step/installation-step.component";
 
 @Component({
@@ -16,10 +16,10 @@ import { InstallationStepComponent } from "../../shared/installation-step/instal
     <flash-preview-code-tabs>
       <flash-button slot="preview">Button</flash-button>
       <ng-container slot="ts">
-        {{defaultTs}}
+        {{currentTs}}
       </ng-container>
     </flash-preview-code-tabs>
-    <flash-installation-common/>
+    <flash-installation-wrap/>
     <flash-installation-step [stepNumber]="2" [code]="component">
       <code slot="title"
         >Create file <span class="underline">button.component.ts</span> and copy
@@ -30,7 +30,7 @@ import { InstallationStepComponent } from "../../shared/installation-step/instal
   imports: [PageHeaderComponent, PreviewCodeTabsComponent, ButtonComponent, InstallationWrapComponent, InstallationStepComponent],
 })
 export class ButtonPageComponent {
-  defaultTs = `
+  currentTs = `
   import { Component } from "@angular/core";
   import { ButtonComponent } from "../../ui/button/button.component";
 

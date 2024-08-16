@@ -5,7 +5,7 @@ import { PreviewCodeTabsComponent } from '../../shared/preview-code-tabs/preview
 import { BadgeComponent } from '../../ui/badge/badge.component';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-common.component";
+import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-wrap.component";
 import { InstallationStepComponent } from "../../shared/installation-step/installation-step.component";
 
 @Component({
@@ -24,7 +24,7 @@ import { InstallationStepComponent } from "../../shared/installation-step/instal
         {{demoTs}}
       </ng-container>
     </flash-preview-code-tabs>
-    <flash-installation-common/>
+    <flash-installation-wrap/>
     <flash-installation-step [stepNumber]="2" [code]="component">
       <code slot="title"
         >Create file <span class="underline">badge.component.ts</span> and copy

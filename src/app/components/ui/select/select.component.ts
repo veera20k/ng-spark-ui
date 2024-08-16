@@ -1,34 +1,79 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, Input, input, model, output } from '@angular/core';
 import { PopoverComponent } from '../popover/popover.component';
 import { ButtonComponent } from '../button/button.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faArrowsUpDown } from '@fortawesome/free-solid-svg-icons';
+import { NgClass } from '@angular/common';
+import { ComponentLoaderService } from '../../../core/services/component-loader/component-loader.service';
+import { CheckboxComponent } from '../checkbox/checkbox.component';
+
+type SelectOutput<T extends 'single' | 'multiple'> = T extends 'single'
+  ? string
+  : string[];
 
 @Component({
   selector: 'flash-select',
   template: `
-    <flash-popover [disableScroll]="true" side="bottom">
+    <flash-popover [disableScroll]="true" side="bottom" [anchorWidth]="true">
       <flash-button variant="outlined" slot="trigger">
-        <div class="flex justify-between min-w-[170px] p-1">
-          <h2>Select...</h2>
-          <fa-icon [icon]="faArrowsUpDown" class="text-gray-500"></fa-icon>
+        <div class="flex justify-between p-1">
+          <ng-content select="[slot=label]"></ng-content>
+          <span class="rotate-90"> &#10095; </span>
         </div>
       </flash-button>
-      <div slot="content" class="p-2 rounded-md bg-white shadow-sm w-[200px] border mt-1">
-          <ul>
-            @for (item of items(); track $index) {
-              <li class="cursor-pointer hover:bg-gray-100 p-1 text-sm">
-                {{ item }}
-              </li>
+      <div
+        slot="content"
+        class="p-2 rounded-md bg-white shadow-sm w-full border mt-1"
+      >
+        <ul>
+          @for (item of items(); track item.value) {
+          <li
+            class="cursor-pointer hover:bg-gray-100 pr-2 py-2 pl-8 text-sm relative"
+            (click)="onSelect(item.value)"
+          >
+            @if (type() === 'single' && selected().includes(item.value)){
+            <span class="absolute left-2"> &#10004; </span>
+            } @if (type() === 'multiple') {
+            <flash-checkbox
+              class="absolute left-2 top-2.5"
+              [checked]="selected().includes(item.value)"
+            />
             }
-          </ul>
+            {{ item.label }}
+          </li>
+          }
+        </ul>
       </div>
     </flash-popover>
   `,
   standalone: true,
-  imports: [PopoverComponent, ButtonComponent, FontAwesomeModule],
+  imports: [PopoverComponent, ButtonComponent, NgClass, CheckboxComponent],
 })
-export class SelectComponent {
-  faArrowsUpDown = faArrowsUpDown;
-  items = input(['Item 1', 'Item 2', 'Item 3']);
+export class SelectComponent<T extends 'single' | 'multiple'> {
+  type = input<T>('single' as T);
+  items = input.required<{ value: string; label: string }[]>();
+  selectEvent = output<SelectOutput<T>>();
+  selected = model<SelectOutput<T>>(
+    this.type() === 'single'
+      ? ('' as SelectOutput<T>)
+      : ([] as unknown as SelectOutput<T>)
+  );
+  private cmptLoaderService = inject(ComponentLoaderService);
+
+  onSelect(value: string) {
+    if (this.type() === 'single') {
+      this.selected.set(value as SelectOutput<T>);
+      this.selectEvent.emit(this.selected());
+      this.cmptLoaderService.close();
+    } else {
+      let selectedArray: string[] = [];
+      if ((this.selected() as string[]).includes(value)) {
+        selectedArray = (this.selected() as string[]).filter(
+          (v) => v !== value
+        );
+      } else {
+        selectedArray = [...(this.selected() as string[]), value];
+      }
+      this.selected.set(selectedArray as SelectOutput<T>);
+      this.selectEvent.emit(this.selected());
+    }
+  }
 }

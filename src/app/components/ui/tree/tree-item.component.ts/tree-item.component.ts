@@ -1,7 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, input, output, signal } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown';
 import { BadgeComponent } from '../../badge/badge.component';
 
 @Component({
@@ -12,15 +11,15 @@ import { BadgeComponent } from '../../badge/badge.component';
       <ng-content select="[slot=label]" />
       <span
         (click)="toggle()"
-        [ngClass]="{ 'rotate-180': isOpen(), 'opacity-50': disabled() }"
         class="mx-2"
+        [ngClass]="{ '-rotate-90': isOpen(), 'rotate-90': !isOpen(), 'opacity-50': disabled() }"
         role="button"
       >
-        <ng-content select="[slot=trigger]" />
-      </span>
+         &#x276F;
+        </span>
       <ng-content select="[slot=info]" />
     </div>
-    <div class="accordion-body" [ngClass]="isOpen() ? 'accordion-open' : ''">
+    <div class="accordion-body" [ngClass]="{ 'accordion-open': isOpen() }">
       <section class="overflow-hidden">
         <div class="m-1">
           <ng-content select="[slot=content]" />
@@ -28,7 +27,7 @@ import { BadgeComponent } from '../../badge/badge.component';
       </section>
     </div>
   `,
-  imports: [FontAwesomeModule, NgClass, BadgeComponent],
+  imports: [NgClass, BadgeComponent],
 })
 export class TreeItemComponent {
   setOpen = input(false);
@@ -36,8 +35,6 @@ export class TreeItemComponent {
   toggleEvent = output<boolean>();
   alwaysOpen = input(false);
   disabled = input(false);
-
-  faChevronDown = faChevronDown;
 
   ngOnInit(): void {
     this.isOpen.set(this.setOpen() || this.alwaysOpen());

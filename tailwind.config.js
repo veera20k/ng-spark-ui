@@ -59,7 +59,7 @@ module.exports = {
           },
           "100%": { transform: "translate(-50%, -50%) scale(1)", opacity: "1" },
         },
-        "sheet-in": {
+        "slide-left-in": {
           "0%": {
             transform: "translateX(-100%)",
             opacity: "0.8",
@@ -69,22 +69,76 @@ module.exports = {
             opacity: "1",
           },
         },
-        "sheet-out": {
+        "slide-right-in": { 
           "0%": {
+            transform: "translateX(100%)",
+            opacity: "0.8",
+          },
+          "100%": {
             transform: "translateX(0)",
             opacity: "1",
           },
-          "100%": {
-            transform: "translateX(-100%)",
+        },
+        "slide-top-in": {
+          "0%": {
+            transform: "translateY(-100%)",
             opacity: "0.8",
           },
+          "100%": {
+            transform: "translateY(0)",
+            opacity: "1",
+          },
         },
-
+        "slide-top-center-in": {
+          "0%": {
+            transform: "translate(-50%, -100%)",
+            opacity: "0.8",
+          },
+          "100%": {
+            transform: "translate(-50%, 0)",
+            opacity: "1",
+          },
+        },
+        "slide-bottom-center-in": {
+          "0%": {
+            transform: "translate(-50%, 100%)",
+            opacity: "0.8",
+          },
+          "100%": {
+            transform: "translate(-50%, 0)",
+            opacity: "1",
+          },
+        },
+        "slide-bottom-in": {
+          "0%": {
+            transform: "translateY(100%)",
+            opacity: "0.8",
+          },
+          "100%": {
+            transform: "translateY(0)",
+            opacity: "1",
+          },
+        },
+        "popover-in": {
+          "0%": {
+            transform: "scale(0.95)",
+            opacity: "0.8",
+          },
+          "100%": {
+            transform: "scale(1)",
+            opacity: "1",
+          },
+        },
       },
       animation: {
         "scale-in": "scale-in 0.2s ease-in-out",
-        "sheet-in": "sheet-in 0.3s ease-in-out",
-        "sheet-out": "sheet-out 0.2s ease-in-out",
+        "slide-left-in": "slide-left-in 0.3s ease-in-out",
+        "slide-right-in": "slide-right-in 0.3s ease-in-out",
+        "slide-top-in": "slide-top-in 0.3s ease-in-out",
+        "slide-bottom-in": "slide-bottom-in 0.3s ease-in-out",
+        "slide-top-center-in": "slide-top-center-in 0.3s ease-in-out",
+        "slide-bottom-center-in": "slide-bottom-center-in 0.3s ease-in-out",
+        "popover-in": "popover-in 0.1s ease-in-out",
       },
     },
   },

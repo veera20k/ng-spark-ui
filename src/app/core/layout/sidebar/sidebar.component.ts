@@ -4,7 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'flash-sidebar',
-  template: `<aside class="px-4 pb-4 pt-1 text-sm w-max">
+  template: `<aside class="px-4 pb-4 pt-1 text-sm w-max fixed">
     @for (module of items; track module.name; let i = $index) {
     <h3 class="font-bold" [ngClass]="i == 0 ? 'mb-3' : 'my-3'">
       {{ module.name }}
@@ -23,9 +23,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   </aside>`,
   standalone: true,
   imports: [NgClass, RouterLink, RouterLinkActive],
-  host: {
-    class: 'overflow-y-auto',
-  },
 })
 export class SidebarComponent {
   items = [

@@ -26,7 +26,7 @@ import { ButtonComponent } from '../button/button.component';
       </div>
       <div
         class="absolute top-1 right-2 cursor-pointer hidden group-hover:block"
-        (click)="closeEvent.emit()"
+        (click)="closeEvent.emit(refIdx())"
       >
         ✖
       </div>
@@ -45,9 +45,11 @@ export class ToastComponent {
     variant: 'primary',
     title: 'My Toaster Title',
     description: 'This is a toaster description text that can be long or short. This is a toaster description text that can be long or short. This is a toaster description text that can be long or short.',
+    position: 'bottom-right',
   });
-  closeEvent = output();
+  closeEvent = output<number>();
   timeout!: ReturnType<typeof setTimeout>;
+  refIdx = input(0);
 
   ngOnInit(): void {
     this.closeAfterTimeout();
@@ -66,39 +68,29 @@ export class ToastComponent {
   }
 
   toastClass = computed(() => {
-    let classes = '';
-    switch (this.options().variant) {
-      case 'success':
-        classes = 'bg-green-500 text-white';
-        break;
-      case 'info':
-        classes = 'bg-blue-500 text-white';
-        break;
-      case 'warning':
-        classes = 'bg-yellow-500 text-white';
-        break;
-      case 'error':
-        classes = 'bg-red-600 text-white';
-        break;
-      default:
-        classes = 'bg-white text-primary';
-    }
-    switch (this.options().position) {
-      case 'top-left':
-        classes += ' top-0 left-0';
-        break;
-      case 'bottom-right':
-        classes += ' bottom-0 right-0';
-        break;
-      case 'bottom-left':
-        classes += ' bottom-0 left-0';
-        break;
-      default:
-        classes += ' top-5 right-5';
-        break;
-    }
-    return classes;
+    const variantClasses: Record<string, string> = {
+      default: 'bg-white text-primary',
+      success: 'bg-green-500 text-white',
+      info: 'bg-blue-500 text-white',
+      warning: 'bg-yellow-500 text-white',
+      error: 'bg-red-600 text-white',
+    };
+  
+    const positionClasses: Record<string, string> = {
+      'top-left': 'top-3 left-3 animate-slide-left-in',
+      'top-right': 'top-3 right-3 animate-slide-right-in',
+      'top-center': 'top-3 left-1/2 animate-slide-top-center-in -translate-x-1/2',
+      'bottom-right': 'bottom-3 right-3 animate-slide-bottom-in',
+      'bottom-left': 'bottom-3 left-3 animate-slide-bottom-in',
+      'bottom-center': 'bottom-3 left-1/2 animate-slide-bottom-center-in -translate-x-1/2',
+    };
+  
+    const variant = variantClasses[this.options().variant || 'primary'] || 'bg-white text-primary';
+    const position = positionClasses[this.options().position || 'top-right'] || 'top-5 right-5 animate-slide-right-in'; 
+  
+    return `${variant} ${position}`;
   });
+  
 
   actionClick() {
     const onActionClick = this.options()?.onActionClick;
@@ -109,13 +101,13 @@ export class ToastComponent {
 
   @HostListener('document:keydown.escape', ['$event'])
   onKeydownHandler() {
-    this.closeEvent.emit();
+    this.closeEvent.emit(this.refIdx());
   }
 
   closeAfterTimeout() {
     const timeout = this.options().timeout || 3000;
     this.timeout = setTimeout(() => {
-      this.closeEvent.emit();
+      this.closeEvent.emit(this.refIdx());
     }, timeout);
   }
 }

@@ -1,7 +1,6 @@
 import { NgClass, NgStyle } from '@angular/common';
 import {
   Component,
-  ContentChild,
   effect,
   ElementRef,
   HostListener,
@@ -20,10 +19,9 @@ import { Side } from '../../../core/models/common.model';
     <div
       class="bg-primary px-2 py-1.5 leading-3 rounded-lg text-white min-w-[24px]"
       id="flash-tooltip-content"
-      [ngStyle]="{ 'inset-area': side(), 'margin': distance() + 'px' }"
+      [ngStyle]="{ 'inset-area': side(), margin: distance() + 'px' }"
       [ngClass]="{ hidden: !isVisible(), visible: isVisible() }"
     >
-      <!-- Arrow for Top -->
       @switch (side()) { @case ('top') {
       <div
         class="absolute border-[6px] transform top-full left-1/2 -translate-x-1/2 rotate-180 border-t-transparent border-b-primary border-l-transparent border-r-transparent"
@@ -41,7 +39,6 @@ import { Side } from '../../../core/models/common.model';
         class="absolute w-0 h-0 border-[6px] right-full top-1/2 transform -translate-y-1/2 border-t-transparent border-b-transparent border-l-transparent border-r-primary"
       ></div>
       } }
-
       <ng-content select="[slot=content]"></ng-content>
     </div>
   `,

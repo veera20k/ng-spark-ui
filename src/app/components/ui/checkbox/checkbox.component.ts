@@ -9,7 +9,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
   template: `
     <label
       [for]="htmlFor()"
-      class="relative flex items-center p-3 rounded-full cursor-pointer"
+      class="relative flex items-center rounded-full cursor-pointer"
     >
       <input
         type="checkbox"
@@ -21,19 +21,20 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
         #checkbox
       />
       <span
-        class="absolute text-white transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100"
+        class="absolute text-white text-xs transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100"
       >
-        <fa-icon [icon]="faCheck" class="fa-xs"></fa-icon>
+        &#10004;
       </span>
     </label>
     <label
       [for]="htmlFor()"
       class="cursoir-pointer select-none"
       [ngClass]="{ 'opaccity-50 cursor-not-allowed': disabled() }"
-    >{{label()}}</label>
+      >{{ label() }}</label
+    >
   `,
   host: {
-    class: 'inline-flex items-center gap-[8px]',
+    class: 'inline-flex items-center',
   },
   imports: [FontAwesomeModule, NgClass],
 })
