@@ -10,15 +10,15 @@ type SelectOutput<T extends 'single' | 'multiple'> = T extends 'single'
   : string[];
 
 @Component({
-  selector: 'flash-select',
+  selector: 'spark-select',
   template: `
-    <flash-popover [disableScroll]="true" side="bottom" [anchorWidth]="true">
-      <flash-button variant="outlined" slot="trigger">
+    <spark-popover [disableScroll]="true" side="bottom" [anchorWidth]="true">
+      <spark-button variant="outlined" slot="trigger">
         <div class="flex justify-between p-1">
           <ng-content select="[slot=label]"></ng-content>
           <span class="rotate-90"> &#10095; </span>
         </div>
-      </flash-button>
+      </spark-button>
       <div
         slot="content"
         class="p-2 rounded-md bg-white shadow-sm w-full border mt-1"
@@ -32,7 +32,7 @@ type SelectOutput<T extends 'single' | 'multiple'> = T extends 'single'
             @if (type() === 'single' && selected().includes(item.value)){
             <span class="absolute left-2"> &#10004; </span>
             } @if (type() === 'multiple') {
-            <flash-checkbox
+            <spark-checkbox
               class="absolute left-2 top-2.5"
               [checked]="selected().includes(item.value)"
             />
@@ -42,7 +42,7 @@ type SelectOutput<T extends 'single' | 'multiple'> = T extends 'single'
           }
         </ul>
       </div>
-    </flash-popover>
+    </spark-popover>
   `,
   standalone: true,
   imports: [PopoverComponent, ButtonComponent, NgClass, CheckboxComponent],

@@ -6,38 +6,38 @@ import { faTerminal } from '@fortawesome/free-solid-svg-icons/faTerminal';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
-import { FlashLinkComponent } from '../../shared/link/flash-link.component';
+import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 
 @Component({
-  selector: 'flash-alert-page',
+  selector: 'spark-alert-page',
   standalone: true,
   template: `
-    <flash-page-header
+    <spark-page-header
       title="Alert"
       description="An alert is a small window that displays a brief, important message in a way that attracts the user's attention without interrupting the user's task."
-    ></flash-page-header>
-    <flash-preview-code-tabs>
-      <flash-alert slot="preview">
+    ></spark-page-header>
+    <spark-preview-code-tabs>
+      <spark-alert slot="preview">
         <fa-icon slot="icon" class="fa-xs" [icon]="faTerminal"></fa-icon>
         <ng-container slot="title">Warning!</ng-container>
         <ng-container slot="description">
           This is a warning alert. This is a warning alert. This is a warning
         </ng-container>
-      </flash-alert>
+      </spark-alert>
       <ng-container slot="ts">
         {{ demoTs }}
       </ng-container>
-    </flash-preview-code-tabs>
-    <flash-installation-wrap>
-      <flash-installation-step [stepNumber]="2">
-        <flash-link
-          href="https://github.com/veera20k/flash-ui/tree/main/src/app/components/ui/alert"
+    </spark-preview-code-tabs>
+    <spark-installation-wrap>
+      <spark-installation-step [stepNumber]="2">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/tree/main/src/app/components/ui/alert"
           name="alert.component.ts"
           type="components"
           slot="title"
-        ></flash-link>
-      </flash-installation-step>
-    </flash-installation-wrap>
+        ></spark-link>
+      </spark-installation-step>
+    </spark-installation-wrap>
   `,
   imports: [
     PageHeaderComponent,
@@ -46,7 +46,7 @@ import { FlashLinkComponent } from '../../shared/link/flash-link.component';
     FontAwesomeModule,
     InstallationWrapComponent,
     InstallationStepComponent,
-    FlashLinkComponent,
+    SparkLinkComponent,
   ],
 })
 export class AlertPageComponent {
@@ -59,13 +59,13 @@ export class AlertPageComponent {
   @Component({
     selector: 'app-alert-demo',
     templateUrl: '
-      <flash-alert>
+      <spark-alert>
         <fa-icon slot="icon" class="fa-xs" [icon]="faTerminal"></fa-icon>
         <ng-container slot="title">Warning!</ng-container>
         <ng-container slot="description">
         This is a warning alert. This is a warning alert. This is a warning
       </ng-container>
-      </flash-alert>',
+      </spark-alert>',
     imports: [
         AlertComponent
     ],

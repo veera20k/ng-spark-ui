@@ -6,65 +6,65 @@ import { ButtonComponent } from '../../ui/button/button.component';
 import { ComponentLoaderService } from '../../../core/services/component-loader/component-loader.service';
 import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
-import { FlashLinkComponent } from '../../shared/link/flash-link.component';
+import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 
 @Component({
-  selector: 'flash-dialog-page',
+  selector: 'spark-dialog-page',
   standalone: true,
   template: `
-    <flash-page-header
+    <spark-page-header
       title="Dialog"
       description="A modal dialog that interrupts the user with important content and expects a response."
-    ></flash-page-header>
-    <flash-preview-code-tabs>
-      <flash-button
+    ></spark-page-header>
+    <spark-preview-code-tabs>
+      <spark-button
         variant="outlined"
         slot="preview"
         (clickEvent)="open($event, dialogRef)"
-        >Open Dialog</flash-button
+        >Open Dialog</spark-button
       >
       <ng-template #dialogRef>
-        <flash-dialog>
+        <spark-dialog>
           <ng-container slot="title"> Are you absolutely sure? </ng-container>
           <ng-container slot="description">
             This action cannot be undone. This will permanently delete your
             account and remove your data from our servers.
           </ng-container>
-        </flash-dialog>
+        </spark-dialog>
       </ng-template>
       <ng-container slot="ts">
         {{ currentTs }}
       </ng-container>
-    </flash-preview-code-tabs>
-    <flash-installation-wrap>
-      <flash-installation-step [stepNumber]="2">
-        <flash-link
-          href="https://github.com/veera20k/flash-ui/blob/main/src/app/components/ui/dialog/dialog.component.ts"
+    </spark-preview-code-tabs>
+    <spark-installation-wrap>
+      <spark-installation-step [stepNumber]="2">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/components/ui/dialog/dialog.component.ts"
           name="dialog.component.ts"
           type="components"
           slot="title"
-        ></flash-link>
-      </flash-installation-step>
-      <flash-installation-step [stepNumber]="3">
-        <flash-link
-          href="https://github.com/veera20k/flash-ui/blob/main/src/app/core/services/component-loader/component-loader.service.ts"
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="3">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/core/services/component-loader/component-loader.service.ts"
           name="component-loader.service.ts"
           type="services"
           slot="title"
-        ></flash-link>
-      </flash-installation-step>
-      <flash-installation-step [stepNumber]="4">
-        <flash-link
-          href="https://github.com/veera20k/flash-ui/blob/main/src/app/core/directives/click-outside.directive.ts"
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="4">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/core/directives/click-outside.directive.ts"
           name="click-outside.directive.ts"
           type="directives"
           slot="title"
-        ></flash-link>
-      </flash-installation-step>
-      <flash-installation-step [stepNumber]="5" [code]="animation">
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="5" [code]="animation">
         <code slot="title"> Update you tailwind.config.js file. </code>
-      </flash-installation-step>
-    </flash-installation-wrap>
+      </spark-installation-step>
+    </spark-installation-wrap>
   `,
   imports: [
     PageHeaderComponent,
@@ -73,7 +73,7 @@ import { FlashLinkComponent } from '../../shared/link/flash-link.component';
     ButtonComponent,
     InstallationWrapComponent,
     InstallationStepComponent,
-    FlashLinkComponent,
+    SparkLinkComponent,
   ],
 })
 export class DialogPageComponent {
@@ -93,21 +93,21 @@ export class DialogPageComponent {
     selector: 'app-dialog-demo',
     standalone: true,
     template: \`
-        <flash-button
+        <spark-button
           variant="outlined"
           slot="preview"
           (clickEvent)="open($event, dialogRef)"
-          >Open Dialog</flash-button
+          >Open Dialog</spark-button
         >
         <ng-template #dialogRef>
-          <flash-dialog>
+          <spark-dialog>
             <ng-container slot="title"> Are you absolutely sure? </ng-container>
             <ng-container slot="description">
               This action cannot be undone. This will permanently delete your
               account and remove your data from our servers.
             </ng-container>
-          </flash-dialog>
-      </flash-preview-code-tabs>
+          </spark-dialog>
+      </spark-preview-code-tabs>
     \`,
     imports: [
       DialogComponent,

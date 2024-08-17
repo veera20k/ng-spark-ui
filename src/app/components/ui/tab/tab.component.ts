@@ -2,7 +2,7 @@ import { NgClass, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
 import { Component, input, output, signal } from '@angular/core';
 
 @Component({
-  selector: 'flash-tab',
+  selector: 'spark-tab',
   standalone: true,
   template: `
   <div class="flex gap-4 border-b">

@@ -3,35 +3,71 @@ import { PageHeaderComponent } from '../page-header/page-header.component';
 import { PopoverComponent } from '../../ui/popover/popover.component';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { PreviewCodeTabsComponent } from '../../shared/preview-code-tabs/preview-code-tabs.component';
-import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-wrap.component";
-import { InstallationStepComponent } from "../../shared/installation-step/installation-step.component";
+import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
+import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
+import { SparkLinkComponent } from '../../shared/link/spark-link.component';
+import { NotesComponent } from '../../shared/notes/notes.component';
 
 @Component({
-  selector: 'flash-popover-page',
+  selector: 'spark-popover-page',
   standalone: true,
   template: `
-    <flash-page-header
+    <spark-page-header
       title="Popover"
       description="A popover is a non-modal dialog that appears when the user interacts with an element."
-    ></flash-page-header>
-    <flash-preview-code-tabs>
-      <flash-popover slot="preview" side="bottom" [static]="true">
-        <flash-button slot="trigger">Click me</flash-button>
-        <div slot="content" class="bg-white p-4 rounded-lg shadow-md w-[300px] m-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus mollitia repudiandae dolore debitis. Sed laudantium necessitatibus cumque labore at quos nostrum sapiente doloribus laboriosam recusandae hic, quidem consequatur possimus. Cupiditate. 
+    ></spark-page-header>
+    <spark-preview-code-tabs>
+      <spark-popover slot="preview" side="bottom" [static]="true">
+        <spark-button slot="trigger">Click me</spark-button>
+        <div
+          slot="content"
+          class="bg-white p-4 rounded-lg shadow w-[300px] m-2"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
+          mollitia repudiandae dolore debitis. Sed laudantium necessitatibus
+          cumque labore at quos nostrum sapiente doloribus laboriosam recusandae
+          hic, quidem consequatur possimus. Cupiditate.
         </div>
-      </flash-popover>
+      </spark-popover>
       <ng-container slot="ts">
         {{ currentTs }}
       </ng-container>
-    </flash-preview-code-tabs>
-    <flash-installation-wrap />
-    <flash-installation-step [stepNumber]="2" [code]="component">
-      <code slot="title"
-        >Create file <span class="underline">popover.component.ts</span> and
-        copy and paste the following code into your components folder.</code
-      >
-    </flash-installation-step>
+    </spark-preview-code-tabs>
+    <spark-installation-wrap>
+      <spark-installation-step [stepNumber]="2">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/components/ui/popover/popover.component.ts"
+          name="popover.component.ts"
+          type="components"
+          slot="title"
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="3">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/core/services/component-loader/component-loader.service.ts"
+          name="component-loader.service.ts"
+          type="services"
+          slot="title"
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="4">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/core/directives/click-outside.directive.ts"
+          name="click-outside.directive.ts"
+          type="directives"
+          slot="title"
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="5" [code]="animation">
+        <code slot="title"> Update you tailwind.config.js file. </code>
+      </spark-installation-step>
+    </spark-installation-wrap>
+    <spark-notes>
+      <p>
+        This componet uses anchor element to position itself. It is not
+        supported in IE11. please check the browser support.
+      </p>
+    </spark-notes>
   `,
   imports: [
     PageHeaderComponent,
@@ -40,124 +76,45 @@ import { InstallationStepComponent } from "../../shared/installation-step/instal
     PreviewCodeTabsComponent,
     InstallationWrapComponent,
     InstallationStepComponent,
-],
+    SparkLinkComponent,
+    NotesComponent,
+  ],
 })
 export class PopoverPageComponent {
-
   currentTs = `
   import { Component } from '@angular/core';
   import { PopoverComponent } from '../../ui/popover/popover.component';
   import { ButtonComponent } from '../../ui/button/button.component';
 
   @Component({
-    selector: 'flash-popover',
+    selector: 'spark-popover-demo',
     standalone: true,
     template: \`
-      <flash-popover slot="preview" side="bottom" [static]="true">
-        <flash-button slot="trigger">Click me</flash-button>
+      <spark-popover slot="preview" side="bottom" [static]="true">
+        <spark-button slot="trigger">Click me</spark-button>
         <div slot="content" class="bg-white p-4 rounded-lg shadow-md w-[300px] m-2">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus mollitia repudiandae dolore debitis. Sed laudantium necessitatibus cumque labore at quos nostrum sapiente doloribus laboriosam recusandae hic, quidem consequatur possimus. Cupiditate. 
         </div>
-      </flash-popover>
+      </spark-popover>
     \`,
     imports: [
       PopoverComponent,
       ButtonComponent,
     ],
   })
-  export class PopoverComponent {}`;
+  export class PopoverDemoComponent {}`;
 
-component = `
-  import {
-    Component,
-    inject,
-    input,
-    signal,
-    TemplateRef,
-    ViewChild,
-  } from '@angular/core';
-  import { ComponentLoaderService } from '../../../core/services/component-loader/component-loader.service';
-  import { NgStyle } from '@angular/common';
-  import { Side } from '../../../core/models/common.model';
-
-  @Component({
-    selector: 'flash-popover',
-    standalone: true,
-    template: \`
-      <div
-        (mouseover)="hoverToggle() && !alwaysOpen() && toggle($event)"
-        (mouseout)="hoverToggle() && cmptLoaderService.close()"
-        (click)="!alwaysOpen() && toggle($event)"
-        id="flash-popover-trigger"
-      >
-        <ng-content select="[slot=trigger]" />
-      </div>
-      <ng-template #template>
-        <div
-          id="flash-popover-content"
-          [ngStyle]="{
-            'inset-area': side(),
-            'position-try-options': static() ? 'unset' : 'flip-block'
-          }"
-        >
-          <ng-content select="[slot=content]" />
-        </div>
-      </ng-template>
-    \`,
-    styles: [
-      \`
-        #flash-popover-trigger {
-          anchor-name: --flash-popover-anchor;
-        }
-        #flash-popover-content {
-          position: absolute;
-          position-anchor: --flash-popover-anchor;
-        }
-      \`,
-    ],
-    imports: [NgStyle],
-  })
-  export class PopoverComponent {
-    cmptLoaderService = inject(ComponentLoaderService);
-    isOpen = signal(false);
-    alwaysOpen = input(false);
-    side = input<Side>('top');
-    static = input(false);
-    hoverToggle = input(false);
-    disableScroll = input(false);
-
-    @ViewChild('template', { static: true })
-    popoverTemplate!: TemplateRef<unknown>;
-
-    ngOnInit(): void {
-      if (this.alwaysOpen()) {
-        this.cmptLoaderService.open(
-          new MouseEvent('click'),
-          this.popoverTemplate,
-          {
-            backdrop: false,
-            closeOnBackdropClick: true,
-            disableScroll: this.disableScroll(),
-          }
-        );
-      }
-    }
-
-    toggle(event: MouseEvent) {
-      if (!this.isOpen()) {
-        this.isOpen.set(true);
-        this.cmptLoaderService.open(event, this.popoverTemplate, {
-          backdrop: false,
-          closeOnBackdropClick: true,
-          disableScroll: this.disableScroll(),
-          afterClosed: () => {
-            this.isOpen.set(false);
-          },
-        });
-      } else {
-        this.isOpen.set(false);
-        this.cmptLoaderService.close();
-      }
-    }
+  animation = `
+  keyframes: {
+    "scale-in": {
+      "0%": {
+        transform: "translate(-50%, -50%) scale(0.9)",
+        opacity: "0.8",
+      },
+      "100%": { transform: "translate(-50%, -50%) scale(1)", opacity: "1" },
+    },
+  },
+  animation: {
+    "popover-in": "popover-in 0.1s ease-in-out",
   }`;
 }

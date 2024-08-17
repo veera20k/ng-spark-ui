@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'flash-alert',
+  selector: 'spark-alert',
   standalone: true,
   template: `
     <span class="absolute top-3.5 left-3">

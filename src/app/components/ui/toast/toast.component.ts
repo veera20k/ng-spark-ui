@@ -12,7 +12,7 @@ import { ToasterOptions } from '../../../core/models/dialog-options.model';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
-  selector: 'flash-toast',
+  selector: 'spark-toast',
   standalone: true,
   template: `
     <div
@@ -30,9 +30,9 @@ import { ButtonComponent } from '../button/button.component';
         ✖
       </div>
       @if (options().actionLabel) {
-      <flash-button (clickEvent)="actionClick()">{{
+      <spark-button (clickEvent)="actionClick()">{{
         options().actionLabel
-      }}</flash-button>
+      }}</spark-button>
       }
     </div>
   `,

@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 
 @Component({
-  selector: 'flash-link',
+  selector: 'spark-link',
   standalone: true,
   template: `
     <code 
@@ -16,7 +16,7 @@ import { Component, input } from '@angular/core';
     class: 'contents',
   },
 })
-export class FlashLinkComponent {
+export class SparkLinkComponent {
   href = input.required();
   type = input('Components');
   name = input();

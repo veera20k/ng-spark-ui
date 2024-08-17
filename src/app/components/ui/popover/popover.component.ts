@@ -11,20 +11,20 @@ import { NgStyle } from '@angular/common';
 import { Side } from '../../../core/models/common.model';
 
 @Component({
-  selector: 'flash-popover',
+  selector: 'spark-popover',
   standalone: true,
   template: `
     <div
       (mouseover)="hoverToggle() && !alwaysOpen() && toggle($event)"
       (mouseout)="hoverToggle() && cmptLoaderService.close()"
       (click)="!alwaysOpen() && toggle($event)"
-      id="flash-popover-trigger"
+      id="spark-popover-trigger"
     >
       <ng-content select="[slot=trigger]" />
     </div>
     <ng-template #template>
       <div
-        id="flash-popover-content"
+        id="spark-popover-content"
         class="animate-popover-in"
         [ngStyle]="{
           'inset-area': side(),
@@ -38,12 +38,12 @@ import { Side } from '../../../core/models/common.model';
   `,
   styles: [
     `
-      #flash-popover-trigger {
-        anchor-name: --flash-popover-anchor;
+      #spark-popover-trigger {
+        anchor-name: --spark-popover-anchor;
       }
-      #flash-popover-content {
+      #spark-popover-content {
         position: absolute;
-        position-anchor: --flash-popover-anchor;
+        position-anchor: --spark-popover-anchor;
       }
     `,
   ],

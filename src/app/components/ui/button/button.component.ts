@@ -3,7 +3,7 @@ import { ButtonVariant } from '../../../core/models/common.model';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'flash-button',
+  selector: 'spark-button',
   standalone: true,
   template: `
     <button

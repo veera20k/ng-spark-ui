@@ -24,8 +24,8 @@ body {
   grid-template-rows: 1fr;
 }
 
-#flash-tooltip-trigger {
-  anchor-name: --flash-popover-anchor;
+#spark-tooltip-trigger {
+  anchor-name: --spark-popover-anchor;
 }
 
 @layer base {

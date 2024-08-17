@@ -3,7 +3,7 @@ import { Component, input, output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
-  selector: 'flash-checkbox',
+  selector: 'spark-checkbox',
   standalone: true,
   template: `
     <label

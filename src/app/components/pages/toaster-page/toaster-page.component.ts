@@ -6,54 +6,81 @@ import { ToastComponent } from '../../ui/toast/toast.component';
 import { PageHeaderComponent } from '../page-header/page-header.component';
 import { ToasterService } from '../../../core/services/toaster/toaster.service';
 import { ToasterPosition } from '../../../core/models/common.model';
+import { InstallationStepComponent } from "../../shared/installation-step/installation-step.component";
+import { SparkLinkComponent } from "../../shared/link/spark-link.component";
+import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-wrap.component";
 
 @Component({
-  selector: 'flash-toaster-page',
+  selector: 'spark-toaster-page',
   standalone: true,
   template: `
-    <flash-page-header
+    <spark-page-header
       title="Toaster"
       description="A toaster is a small pop-up window that displays a brief message in response to a user action."
-    ></flash-page-header>
-    <flash-preview-code-tabs>
+    ></spark-page-header>
+    <spark-preview-code-tabs>
       <div class="grid grid-cols-3 gap-3" slot="preview">
-        <flash-button
+        <spark-button
           variant="outlined"
           (clickEvent)="open($event, 'top-right')"
-          >Top Right</flash-button
+          >Top Right</spark-button
         >
-        <flash-button
+        <spark-button
           variant="outlined"
           (clickEvent)="open($event, 'top-center')"
-          >Top center</flash-button
+          >Top center</spark-button
         >
-        <flash-button variant="outlined" (clickEvent)="open($event, 'top-left')"
-          >Top Left</flash-button
+        <spark-button variant="outlined" (clickEvent)="open($event, 'top-left')"
+          >Top Left</spark-button
         >
-        <flash-button
+        <spark-button
           variant="outlined"
           (clickEvent)="open($event, 'bottom-right')"
-          >Bottom Right</flash-button
+          >Bottom Right</spark-button
         >
-        <flash-button
+        <spark-button
           variant="outlined"
           (clickEvent)="open($event, 'bottom-center')"
-          >Bottom Center</flash-button
+          >Bottom Center</spark-button
         >
-        <flash-button
+        <spark-button
           variant="outlined"
           (clickEvent)="open($event, 'bottom-left')"
-          >Bottom Left</flash-button
+          >Bottom Left</spark-button
         >
       </div>
-    </flash-preview-code-tabs>
+    </spark-preview-code-tabs>
+    <spark-installation-wrap>
+      <spark-installation-step [stepNumber]="2">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/components/ui/popover/toast.component.ts"
+          name="toast.component.ts"
+          type="components"
+          slot="title"
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="3">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/core/services/toaster/toaster.service.ts"
+          name="component-loader.service.ts"
+          type="services"
+          slot="title"
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="4" [code]="animation">
+        <code slot="title"> Update you tailwind.config.js file. </code>
+      </spark-installation-step>
+    </spark-installation-wrap>
   `,
   imports: [
     PageHeaderComponent,
     PreviewCodeTabsComponent,
     ButtonComponent,
     ToastComponent,
-  ],
+    InstallationStepComponent,
+    SparkLinkComponent,
+    InstallationWrapComponent
+],
 })
 export class ToasterPageComponent {
   private toasterService = inject(ToasterService);
@@ -78,37 +105,37 @@ export class ToasterPageComponent {
   import { ToasterPosition } from '../../../core/models/common.model';
 
   @Component({
-    selector: 'flash-toaster-page',
+    selector: 'spark-toaster-demo',
     standalone: true,
     template: \`
         <div class="grid grid-cols-3 gap-3">
-          <flash-button
+          <spark-button
             variant="outlined"
             (clickEvent)="open($event, 'top-right')"
-            >Top Right</flash-button
+            >Top Right</spark-button
           >
-          <flash-button
+          <spark-button
             variant="outlined"
             (clickEvent)="open($event, 'top-center')"
-            >Top center</flash-button
+            >Top center</spark-button
           >
-          <flash-button variant="outlined" (clickEvent)="open($event, 'top-left')"
-            >Top Left</flash-button
+          <spark-button variant="outlined" (clickEvent)="open($event, 'top-left')"
+            >Top Left</spark-button
           >
-          <flash-button
+          <spark-button
             variant="outlined"
             (clickEvent)="open($event, 'bottom-right')"
-            >Bottom Right</flash-button
+            >Bottom Right</spark-button
           >
-          <flash-button
+          <spark-button
             variant="outlined"
             (clickEvent)="open($event, 'bottom-center')"
-            >Bottom Center</flash-button
+            >Bottom Center</spark-button
           >
-          <flash-button
+          <spark-button
             variant="outlined"
             (clickEvent)="open($event, 'bottom-left')"
-            >Bottom Left</flash-button
+            >Bottom Left</spark-button
           >
         </div>
     \`,
@@ -117,7 +144,7 @@ export class ToasterPageComponent {
       ToastComponent,
     ],
   })
-  export class ToasterPageComponent {
+  export class ToasterDemoComponent {
     private toasterService = inject(ToasterService);
 
     open(event: MouseEvent, side: ToasterPosition) {
@@ -148,7 +175,7 @@ export class ToasterPageComponent {
   import { ButtonComponent } from '../button/button.component';
 
   @Component({
-    selector: 'flash-toast',
+    selector: 'spark-toast',
     standalone: true,
     template: \`
       <div
@@ -166,9 +193,9 @@ export class ToasterPageComponent {
           ✖
         </div>
         @if (options().actionLabel) {
-        <flash-button (clickEvent)="actionClick()">{{
+        <spark-button (clickEvent)="actionClick()">{{
           options().actionLabel
-        }}</flash-button>
+        }}</spark-button>
         }
       </div>
     \`,
@@ -246,4 +273,76 @@ export class ToasterPageComponent {
       }, timeout);
     }
   }`;
+
+  animation = `
+  keyframes: {
+   "slide-left-in": {
+     "0%": {
+       transform: "translateX(-100%)",
+       opacity: "0.8",
+     },
+     "100%": {
+       transform: "translateX(0)",
+       opacity: "1",
+     },
+   },
+   "slide-right-in": { 
+     "0%": {
+       transform: "translateX(100%)",
+       opacity: "0.8",
+     },
+     "100%": {
+       transform: "translateX(0)",
+       opacity: "1",
+     },
+   },
+   "slide-top-in": {
+     "0%": {
+       transform: "translateY(-100%)",
+       opacity: "0.8",
+     },
+     "100%": {
+       transform: "translateY(0)",
+       opacity: "1",
+     },
+   },
+   "slide-top-center-in": {
+     "0%": {
+       transform: "translate(-50%, -100%)",
+       opacity: "0.8",
+     },
+     "100%": {
+       transform: "translate(-50%, 0)",
+       opacity: "1",
+     },
+   },
+   "slide-bottom-center-in": {
+     "0%": {
+       transform: "translate(-50%, 100%)",
+       opacity: "0.8",
+     },
+     "100%": {
+       transform: "translate(-50%, 0)",
+       opacity: "1",
+     },
+   },
+   "slide-bottom-in": {
+     "0%": {
+       transform: "translateY(100%)",
+       opacity: "0.8",
+     },
+     "100%": {
+       transform: "translateY(0)",
+       opacity: "1",
+     },
+   },
+ },
+ animation: {
+   "slide-left-in": "slide-in('X', '-100%') 0.3s ease-in-out",
+   "slide-right-in": "slide-in('X', '100%') 0.3s ease-in-out",
+   "slide-top-in": "slide-in('Y', '-100%') 0.3s ease-in-out",
+   "slide-bottom-in": "slide-in('Y', '100%') 0.3s ease-in-out",
+   "slide-top-center-in": "slide-in('-50%', '-100%') 0.3s ease-in-out",
+   "slide-bottom-center-in": "slide-in('-50%', '100%') 0.3s ease-in-out",
+ }`;
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'flash-card',
+  selector: 'spark-card',
   standalone: true,
   template: ` <header>
       <ng-content select="[slot=title]"/>

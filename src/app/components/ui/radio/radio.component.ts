@@ -1,7 +1,7 @@
 import { Component, input } from "@angular/core";
 
 @Component({
-  selector: 'flash-radio',
+  selector: 'spark-radio',
   standalone: true,
   template: `
       <input

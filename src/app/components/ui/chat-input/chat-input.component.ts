@@ -5,17 +5,17 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons/faPaperPlane';
 
 @Component({
-  selector: 'flash-chat-input',
+  selector: 'spark-chat-input',
   standalone: true,
   template: `
-    <textarea flashInput> lorem ipsum dolor sit amet </textarea>
+    <textarea sparkInput> lorem ipsum dolor sit amet </textarea>
     <div class="absolute riggh-[10px] bottom-[18px]">
-      <flash-button>
+      <spark-button>
         <fa-icon
           [icon]="faPaperPlane"
           classe="fa-md text-primary-foreground"
         ></fa-icon>
-      </flash-button>
+      </spark-button>
     </div>
   `,
   imports: [InputBaseComponent, ButtonComponent, FontAwesomeModule],

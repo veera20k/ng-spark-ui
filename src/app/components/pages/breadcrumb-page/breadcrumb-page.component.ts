@@ -7,19 +7,19 @@ import { PreviewCodeTabsComponent } from '../../shared/preview-code-tabs/preview
 import { BreadcrumbComponent } from '../../ui/breadcrumb/breadcrumb.component';
 import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
-import { FlashLinkComponent } from '../../shared/link/flash-link.component';
+import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 import { NotesComponent } from "../../shared/notes/notes.component";
 
 @Component({
-  selector: 'flash-breadcrumb-page',
+  selector: 'spark-breadcrumb-page',
   standalone: true,
   template: `
-    <flash-page-header
+    <spark-page-header
       title="Badge"
       description="A badge is a small label used to call out new or unread information."
-    ></flash-page-header>
-    <flash-preview-code-tabs>
-      <flash-breadcrumb
+    ></spark-page-header>
+    <spark-preview-code-tabs>
+      <spark-breadcrumb
         slot="preview"
         [items]="['components', 'breadcrumb', 'slot']"
         [max]="2"
@@ -28,24 +28,24 @@ import { NotesComponent } from "../../shared/notes/notes.component";
           <fa-icon [icon]="faChevronRight" class="text-xs"></fa-icon>
         </ng-template>
         <fa-icon [icon]="faEllipsis" slot="ellipsis"></fa-icon>
-      </flash-breadcrumb>
+      </spark-breadcrumb>
       <ng-container slot="ts">
         {{ currentTs }}
       </ng-container>
-    </flash-preview-code-tabs>
-    <flash-installation-wrap>
-      <flash-installation-step [stepNumber]="2">
-        <flash-link
-          href="https://github.com/veera20k/flash-ui/blob/main/src/app/components/ui/breadcrumb/breadcrumb.component.ts"
+    </spark-preview-code-tabs>
+    <spark-installation-wrap>
+      <spark-installation-step [stepNumber]="2">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/components/ui/breadcrumb/breadcrumb.component.ts"
           name="breadcrumb.component.ts"
           type="components"
           slot="title"
-        ></flash-link>
-      </flash-installation-step>
-    </flash-installation-wrap>
-    <flash-notes>
+        ></spark-link>
+      </spark-installation-step>
+    </spark-installation-wrap>
+    <spark-notes>
       <p>The Seperator and Ellipsis slots are Dynamic. If yo want to hardcode it please replace with your icons</p>
-    </flash-notes>
+    </spark-notes>
   `,
   imports: [
     FontAwesomeModule,
@@ -54,7 +54,7 @@ import { NotesComponent } from "../../shared/notes/notes.component";
     BreadcrumbComponent,
     InstallationWrapComponent,
     InstallationStepComponent,
-    FlashLinkComponent,
+    SparkLinkComponent,
     NotesComponent
 ],
 })
@@ -73,7 +73,7 @@ export class BreadcrumbPageComponent {
     selector: 'app-breadcrumb-demo',
     standalone: true,
     template: \`
-       <flash-breadcrumb
+       <spark-breadcrumb
         slot="preview"
         [items]="['components', 'breadcrumb', 'slot']"
         [max]="2"
@@ -82,7 +82,7 @@ export class BreadcrumbPageComponent {
           <fa-icon [icon]="faChevronRight" class="text-xs"></fa-icon>
         </ng-template>
         <fa-icon [icon]="faEllipsis" slot="ellipsis"></fa-icon>
-      </flash-breadcrumb>
+      </spark-breadcrumb>
     \`,
     imports: [FontAwesomeModule, BreadcrumbComponent],
   })

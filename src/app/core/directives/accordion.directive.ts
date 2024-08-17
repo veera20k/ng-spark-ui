@@ -2,7 +2,7 @@ import { Directive, Input, ContentChildren, QueryList, AfterContentInit, input }
 import { AccordionItemComponent } from '../../components/ui/accoridon-item/accordion-item.component';
 
 @Directive({
-  selector: '[flashAccordion]',
+  selector: '[sparkAccordion]',
   standalone: true,
 })
 export class AccordionDirective implements AfterContentInit {

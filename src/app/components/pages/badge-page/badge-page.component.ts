@@ -6,69 +6,69 @@ import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
-import { FlashLinkComponent } from '../../shared/link/flash-link.component';
+import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 
 @Component({
-  selector: 'flash-badge-page',
+  selector: 'spark-badge-page',
   standalone: true,
   template: `
-    <flash-page-header
+    <spark-page-header
       title="Badge"
       description="A badge is a small label used to call out new or unread information."
-    ></flash-page-header>
-    <flash-preview-code-tabs>
-      <flash-badge slot="preview"> Primary </flash-badge>
+    ></spark-page-header>
+    <spark-preview-code-tabs>
+      <spark-badge slot="preview"> Primary </spark-badge>
       <ng-container slot="Ts">
         {{ getCodeWithVariant('primary') }}
       </ng-container>
-    </flash-preview-code-tabs>
-    <flash-installation-wrap>
-      <flash-installation-step [stepNumber]="2">
-        <flash-link
-          href="https://github.com/veera20k/flash-ui/blob/main/src/app/components/ui/badge/badge.component.ts"
+    </spark-preview-code-tabs>
+    <spark-installation-wrap>
+      <spark-installation-step [stepNumber]="2">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/components/ui/badge/badge.component.ts"
           name="badge.component.ts"
           type="components"
           slot="title"
-        ></flash-link>
-      </flash-installation-step>
-      <flash-installation-step [stepNumber]="3" [code]="badgeVaiantModel">
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="3" [code]="badgeVaiantModel">
         <code slot="title"
           >Update or Create model file with the following code.</code
         >
-      </flash-installation-step>
-    </flash-installation-wrap>
+      </spark-installation-step>
+    </spark-installation-wrap>
     
     <br />
     <h2 class="my-1 text-xl font-bold mb-2">Examples</h2>
     <hr>
     <br />
     <h2 class="text-lg font-bold my-3">Secondary</h2>
-    <flash-preview-code-tabs>
-      <flash-badge slot="preview" variant="secondary"> Secondary </flash-badge>
+    <spark-preview-code-tabs>
+      <spark-badge slot="preview" variant="secondary"> Secondary </spark-badge>
       <ng-container slot="Ts">
         {{ getCodeWithVariant('secondary') }}
       </ng-container>
-    </flash-preview-code-tabs>
+    </spark-preview-code-tabs>
 
     <br />
     <h2 class="text-lg font-bold my-3">Destructive</h2>
-    <flash-preview-code-tabs>
-      <flash-badge slot="preview" variant="destructive">
+    <spark-preview-code-tabs>
+      <spark-badge slot="preview" variant="destructive">
         Destructive
-      </flash-badge>
+      </spark-badge>
       <ng-container slot="Ts">
         {{ getCodeWithVariant('destructive') }}
       </ng-container>
-    </flash-preview-code-tabs>
+    </spark-preview-code-tabs>
 
     <br />
     <h2 class="text-lg font-bold my-3">Outlined</h2>
-    <flash-preview-code-tabs>
-      <flash-badge slot="preview" variant="outlined"> Outlined </flash-badge>
+    <spark-preview-code-tabs>
+      <spark-badge slot="preview" variant="outlined"> Outlined </spark-badge>
       <ng-container slot="Ts">
         {{ getCodeWithVariant('outlined') }}
       </ng-container>
-    </flash-preview-code-tabs>
+    </spark-preview-code-tabs>
   `,
   imports: [
     PageHeaderComponent,
@@ -77,7 +77,7 @@ import { FlashLinkComponent } from '../../shared/link/flash-link.component';
     FontAwesomeModule,
     InstallationWrapComponent,
     InstallationStepComponent,
-    FlashLinkComponent,
+    SparkLinkComponent,
   ],
 })
 export class BadgePageComponent {
@@ -88,12 +88,12 @@ export class BadgePageComponent {
   import { Component } from '@angular/core';
   import { BadgeComponent } from '../../ui/badge/badge.component';
   @Component({
-    selector: 'flash-badge-demo',
+    selector: 'spark-badge-demo',
     standalone: true,
     template: \`
-      <flash-badge variant="${variant}">
+      <spark-badge variant="${variant}">
         ${variant}
-      </flash-badge>
+      </spark-badge>
       \`,
       imports: [
         BadgeComponent

@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'flash-sidebar',
+  selector: 'spark-sidebar',
   template: `<aside class="px-4 pb-4 pt-1 text-sm w-max fixed">
     @for (module of items; track module.name; let i = $index) {
     <h3 class="font-bold" [ngClass]="i == 0 ? 'mb-3' : 'my-3'">

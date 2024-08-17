@@ -4,17 +4,18 @@ import { PreviewCodeTabsComponent } from '../../shared/preview-code-tabs/preview
 import { SelectComponent } from '../../ui/select/select.component';
 import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-wrap.component";
 import { InstallationStepComponent } from "../../shared/installation-step/installation-step.component";
+import { SparkLinkComponent } from "../../shared/link/spark-link.component";
 
 @Component({
-  selector: 'flash-select-page',
+  selector: 'spark-select-page',
   standalone: true,
   template: `
-    <flash-page-header
+    <spark-page-header
       title="Input"
       description="An input is a component that allows the user to enter and edit text."
-    ></flash-page-header>
-    <flash-preview-code-tabs>
-      <flash-select
+    ></spark-page-header>
+    <spark-preview-code-tabs>
+      <spark-select
         slot="preview"
         [items]="[
           { label: 'Item 1', value: '1' },
@@ -26,18 +27,40 @@ import { InstallationStepComponent } from "../../shared/installation-step/instal
         type="single"
       >
         <div slot="label" class="pr-24">Select...</div>
-      </flash-select>
+      </spark-select>
       <ng-container slot="ts">{{currentTs}}</ng-container>
-    </flash-preview-code-tabs>
-    <flash-installation-wrap />
-    <flash-installation-step [stepNumber]="2" [code]="component">
-      <code slot="title"
-        >Create file <span class="underline">tab.component.ts</span> and
-        copy and paste the following code into your components folder.</code
-      >
-    </flash-installation-step>
+    </spark-preview-code-tabs>
+    <spark-installation-wrap>
+    <spark-installation-step [stepNumber]="2">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/components/ui/select/select.component.ts"
+          name="select.component.ts"
+          type="components"
+          slot="title"
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="3">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/core/services/component-loader/component-loader.service.ts"
+          name="component-loader.service.ts"
+          type="services"
+          slot="title"
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="4">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/core/directives/click-outside.directive.ts"
+          name="click-outside.directive.ts"
+          type="directives"
+          slot="title"
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="5" [code]="animation">
+        <code slot="title"> Update you tailwind.config.js file. </code>
+      </spark-installation-step>
+    </spark-installation-wrap>
   `,
-  imports: [PageHeaderComponent, PreviewCodeTabsComponent, SelectComponent, InstallationWrapComponent, InstallationStepComponent],
+  imports: [PageHeaderComponent, PreviewCodeTabsComponent, SelectComponent, InstallationWrapComponent, InstallationStepComponent, SparkLinkComponent],
 })
 export class SelectPageComponent {
 
@@ -46,10 +69,10 @@ export class SelectPageComponent {
   import { SelectComponent } from '../../ui/select/select.component';
 
   @Component({
-    selector: 'flash-select',
+    selector: 'spark-select-demo',
     standalone: true,
     template: \`
-      <flash-select
+      <spark-select
         [items]="[
           { label: 'Item 1', value: '1' },
           { label: 'Item 2', value: '2' },
@@ -60,90 +83,23 @@ export class SelectPageComponent {
         type="single"
       >
         <div slot="label" class="pr-24">Select...</div>
-      </flash-select>
+      </spark-select>
     \`,
     imports: [SelectComponent],
   })
-  export class SelectComponent {}`;
+  export class SelectDemoComponent {}`;
 
-  component = `
-  import { Component, inject, Input, input, model, output } from '@angular/core';
-  import { PopoverComponent } from '../popover/popover.component';
-  import { ButtonComponent } from '../button/button.component';
-  import { NgClass } from '@angular/common';
-  import { ComponentLoaderService } from '../../../core/services/component-loader/component-loader.service';
-  import { CheckboxComponent } from '../checkbox/checkbox.component';
-
-  type SelectOutput<T extends 'single' | 'multiple'> = T extends 'single'
-    ? string
-    : string[];
-
-  @Component({
-    selector: 'flash-select',
-    template: \`
-      <flash-popover [disableScroll]="true" side="bottom" [anchorWidth]="true">
-        <flash-button variant="outlined" slot="trigger">
-          <div class="flex justify-between p-1">
-            <ng-content select="[slot=label]"></ng-content>
-            <span class="rotate-90"> &#10095; </span>
-          </div>
-        </flash-button>
-        <div
-          slot="content"
-          class="p-2 rounded-md bg-white shadow-sm w-full border mt-1"
-        >
-          <ul>
-            @for (item of items(); track item.value) {
-            <li
-              class="cursor-pointer hover:bg-gray-100 pr-2 py-2 pl-8 text-sm relative"
-              (click)="onSelect(item.value)"
-            >
-              @if (type() === 'single' && selected().includes(item.value)){
-              <span class="absolute left-2"> &#10004; </span>
-              } @if (type() === 'multiple') {
-              <flash-checkbox
-                class="absolute left-2 top-2.5"
-                [checked]="selected().includes(item.value)"
-              />
-              }
-              {{ item.label }}
-            </li>
-            }
-          </ul>
-        </div>
-      </flash-popover>
-    \`,
-    standalone: true,
-    imports: [PopoverComponent, ButtonComponent, NgClass, CheckboxComponent],
-  })
-  export class SelectComponent<T extends 'single' | 'multiple'> {
-    type = input<T>('single' as T);
-    items = input.required<{ value: string; label: string }[]>();
-    selectEvent = output<SelectOutput<T>>();
-    selected = model<SelectOutput<T>>(
-      this.type() === 'single'
-        ? ('' as SelectOutput<T>)
-        : ([] as unknown as SelectOutput<T>)
-    );
-    private cmptLoaderService = inject(ComponentLoaderService);
-
-    onSelect(value: string) {
-      if (this.type() === 'single') {
-        this.selected.set(value as SelectOutput<T>);
-        this.selectEvent.emit(this.selected());
-        this.cmptLoaderService.close();
-      } else {
-        let selectedArray: string[] = [];
-        if ((this.selected() as string[]).includes(value)) {
-          selectedArray = (this.selected() as string[]).filter(
-            (v) => v !== value
-          );
-        } else {
-          selectedArray = [...(this.selected() as string[]), value];
-        }
-        this.selected.set(selectedArray as SelectOutput<T>);
-        this.selectEvent.emit(this.selected());
-      }
-    }
+  animation = `
+  keyframes: {
+    "scale-in": {
+      "0%": {
+        transform: "translate(-50%, -50%) scale(0.9)",
+        opacity: "0.8",
+      },
+      "100%": { transform: "translate(-50%, -50%) scale(1)", opacity: "1" },
+    },
+  },
+  animation: {
+    "popover-in": "popover-in 0.1s ease-in-out",
   }`;
 }

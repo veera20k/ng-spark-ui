@@ -3,7 +3,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
 
 @Component({
-  selector: 'flash-notes',
+  selector: 'spark-notes',
   standalone: true,
   template: `
     <br />

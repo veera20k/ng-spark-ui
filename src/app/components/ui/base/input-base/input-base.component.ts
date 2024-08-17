@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'input[flashInput]',
+  selector: 'input[sparkInput]',
   template: ``,
   standalone: true,
   host: {

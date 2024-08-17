@@ -9,7 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown';
 
 @Component({
-  selector: 'flash-accordion-item',
+  selector: 'spark-accordion-item',
   standalone: true,
   template: `
     <div class="border-b w-full rounded-md">

@@ -1,38 +1,56 @@
 import { Component } from '@angular/core';
 import { PageHeaderComponent } from '../page-header/page-header.component';
-import { PreviewCodeTabsComponent } from "../../shared/preview-code-tabs/preview-code-tabs.component";
-import { TreeComponent } from "../../ui/tree/tree.component";
+import { PreviewCodeTabsComponent } from '../../shared/preview-code-tabs/preview-code-tabs.component';
+import { TreeComponent } from '../../ui/tree/tree.component';
 import { Tree } from '../../../core/models/tree.model';
-import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-wrap.component";
-import { InstallationStepComponent } from "../../shared/installation-step/installation-step.component";
+import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
+import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
+import { SparkLinkComponent } from '../../shared/link/spark-link.component';
+import { NotesComponent } from "../../shared/notes/notes.component";
 
 @Component({
-  selector: 'flash-tree-page',
+  selector: 'spark-tree-page',
   standalone: true,
   template: `
-    <flash-page-header title="Tree" description="display Data in tree format.">
-    </flash-page-header>
-    <flash-preview-code-tabs>
-      <flash-tree slot="preview" [items]="items" />
+    <spark-page-header title="Tree" description="The TreeComponent displays hierarchical data in a folder-like structure, where each node can represent a folder or item. It uses arrows or indicators to show expandable and collapsible sections, allowing users to navigate through nested levels of content efficiently.">
+    </spark-page-header>
+    <spark-preview-code-tabs>
+      <spark-tree slot="preview" [items]="items" />
       <ng-container slot="ts">
         {{ currentTs }}
       </ng-container>
-    </flash-preview-code-tabs>
-    <flash-installation-wrap />
-    <flash-installation-step [stepNumber]="2" [code]="component">
-      <code slot="title"
-        >Create file <span class="underline">tree.component.ts</span> and
-        copy and paste the following code into your components folder.</code
-      >
-    </flash-installation-step>
-    <flash-installation-step [stepNumber]="3" [code]="treeItemComponent">
-      <code slot="title"
-        >Create file <span class="underline">tree-item.component.ts</span> and
-        copy and paste the following code into your components folder.</code
-      >
-    </flash-installation-step>
+    </spark-preview-code-tabs>
+    <spark-installation-wrap>
+      <spark-installation-step [stepNumber]="2">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/components/ui/tree/tree.component.ts"
+          name="tree.component.ts"
+          type="components"
+          slot="title"
+        ></spark-link>
+      </spark-installation-step>
+      <spark-installation-step [stepNumber]="3">
+        <spark-link
+          href="https://github.com/veera20k/spark-ui/blob/main/src/app/components/ui/tree/tree-item.component.ts"
+          name="tree-item.component.ts"
+          type="components"
+          slot="title"
+        ></spark-link>
+      </spark-installation-step>
+    </spark-installation-wrap>
+    <spark-notes>
+      <p>Current lazy loading is not supported. working on it.</p>
+    </spark-notes>
   `,
-  imports: [PageHeaderComponent, PreviewCodeTabsComponent, TreeComponent, InstallationWrapComponent, InstallationStepComponent],
+  imports: [
+    PageHeaderComponent,
+    PreviewCodeTabsComponent,
+    TreeComponent,
+    InstallationWrapComponent,
+    InstallationStepComponent,
+    SparkLinkComponent,
+    NotesComponent
+],
 })
 export class TreePageComponent {
   items: Tree[] = [
@@ -53,16 +71,16 @@ export class TreePageComponent {
   import { Tree } from '../../../core/models/tree.model';
 
   @Component({
-    selector: 'flash-tree',
+    selector: 'spark-tree-demo',
     standalone: true,
     template: \`
-      <flash-preview-code-tabs>
-        <flash-tree slot="preview" [items]="items" />
-      </flash-preview-code-tabs>
+      <spark-preview-code-tabs>
+        <spark-tree slot="preview" [items]="items" />
+      </spark-preview-code-tabs>
     \`,
     imports: [TreeComponent],
   })
-  export class TreeComponent {
+  export class TreeDemoComponent {
     items: Tree[] = [
       {
         name: 'Item 1',
@@ -83,21 +101,21 @@ export class TreePageComponent {
   import { BadgeComponent } from '../badge/badge.component';
 
   @Component({
-    selector: 'flash-tree',
+    selector: 'spark-tree',
     standalone: true,
     template: \`
       @for (item of items; track $index) {
-      <flash-tree-item [disabled]="!item.children?.length">
+      <spark-tree-item [disabled]="!item.children?.length">
         <ng-container slot="label">
           <span class="mr-2"> 🗀 </span>
           {{ item.name }}
         </ng-container>
         @if (item.children?.length) {
         <div class="pl-5" slot="content">
-          <flash-tree [items]="item.children || []"></flash-tree>
+          <spark-tree [items]="item.children || []"></spark-tree>
         </div>
         }
-      </flash-tree-item>
+      </spark-tree-item>
       }
     \`,
     imports: [TreeItemComponent, BadgeComponent],
@@ -113,7 +131,7 @@ export class TreePageComponent {
   import { BadgeComponent } from '../../badge/badge.component';
 
   @Component({
-    selector: 'flash-tree-item',
+    selector: 'spark-tree-item',
     standalone: true,
     template: \`
       <div class="flex pb-2">
@@ -156,5 +174,4 @@ export class TreePageComponent {
       }
     }
   }`;
-
 }

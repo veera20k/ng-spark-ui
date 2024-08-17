@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'flash-avatar',
+  selector: 'spark-avatar',
   standalone: true,
   template: ` <ng-content/>`,
   host: {

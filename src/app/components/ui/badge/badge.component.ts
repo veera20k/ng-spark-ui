@@ -3,7 +3,7 @@ import { BadgeVariant } from '../../../core/models/common.model';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'flash-badge',
+  selector: 'spark-badge',
   standalone: true,
   template: `
     <div

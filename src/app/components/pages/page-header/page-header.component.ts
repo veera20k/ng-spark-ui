@@ -5,14 +5,14 @@ import { faArrowUpRightFromSquare, faChevronRight } from '@fortawesome/free-soli
 import { BreadcrumbComponent } from '../../ui/breadcrumb/breadcrumb.component';
 
 @Component({
-  selector: 'flash-page-header',
+  selector: 'spark-page-header',
   standalone: true,
   template: `
-    <flash-breadcrumb [items]="['components', title()]" >
+    <spark-breadcrumb [items]="['components', title()]" >
       <ng-template #seperator>
         <fa-icon [icon]="faChevronRight" class="text-xs"></fa-icon>
       </ng-template>
-  </flash-breadcrumb>
+  </spark-breadcrumb>
     <h1 class="font-bold text-3xl my-3">{{ title() }}</h1>
     <p class="mb-3 text-gray-600">{{ description() }}</p>
     <br />

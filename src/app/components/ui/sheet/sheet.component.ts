@@ -4,7 +4,7 @@ import { NgClass } from '@angular/common';
 import { Side } from '../../../core/models/common.model';
 
 @Component({
-  selector: 'flash-sheet',
+  selector: 'spark-sheet',
   standalone: true,
   template: `
     <div (click)="openSheet($event, sheetRef)">

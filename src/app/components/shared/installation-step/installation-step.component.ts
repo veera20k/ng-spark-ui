@@ -2,16 +2,16 @@ import { Component, input } from '@angular/core';
 import { HighlighterComponent } from '../highlighter/highlighter.component';
 
 @Component({
-  selector: 'flash-installation-step',
+  selector: 'spark-installation-step',
   template: `
     <div class="flex flex-col gap-3 pl-8 border-l pb-6" id="installation-step">
       <h2 id="step-title" class="before:content-[attr(step)] before:text-sm" [attr.step]="stepNumber()">
         <ng-content select="[slot=title]"></ng-content>
       </h2>
       @if (code()) {
-        <flash-highlighter [language]="language()">
+        <spark-highlighter [language]="language()">
           {{ code() }}
-        </flash-highlighter>
+        </spark-highlighter>
       }
     </div>
   `,

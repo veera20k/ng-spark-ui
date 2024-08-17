@@ -1,7 +1,7 @@
 import { Component, input, output } from '@angular/core';
 
 @Component({
-  selector: 'flash-switch',
+  selector: 'spark-switch',
   standalone: true,
   template: `
     <label class="inline-flex items-center cursor-pointer">

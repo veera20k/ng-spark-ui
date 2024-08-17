@@ -3,7 +3,7 @@ import { ComponentLoaderService } from '../../../core/services/component-loader/
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
-  selector: 'flash-dialog',
+  selector: 'spark-dialog',
   standalone: true,
   template: `
     <div class="flex flex-col space-y-2 text-center sm:text-left">
@@ -17,8 +17,8 @@ import { ButtonComponent } from '../button/button.component';
     <div
       class="flex flex-col-reverse mt-4 sm:flex-row sm:justify-end sm:space-x-2"
     >
-      <flash-button variant="outlined" (clickEvent)="cmptLoaderService.close()">Cancel</flash-button>
-      <flash-button>Submit</flash-button>
+      <spark-button variant="outlined" (clickEvent)="cmptLoaderService.close()">Cancel</spark-button>
+      <spark-button>Submit</spark-button>
     </div>
   `,
   host: {

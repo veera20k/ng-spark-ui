@@ -2,7 +2,7 @@ import { NgClass } from '@angular/common';
 import { Component, input } from '@angular/core';
 
 @Component({
-  selector: 'flash-scroll-tracker',
+  selector: 'spark-scroll-tracker',
   template: `
     @if (items().length) {
     <div class="fixed flex flex-col text-md font-medium gap-1">

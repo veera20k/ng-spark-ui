@@ -13,7 +13,7 @@ import { TooltipComponent } from '../tooltip/tooltip.component';
 import { Side } from '../../../core/models/common.model';
 
 @Component({
-  selector: 'flash-slider',
+  selector: 'spark-slider',
   standalone: true,
   template: `
     <div class="relative w-full h-2 bg-gray-300 rounded-full" #slider>
@@ -21,7 +21,7 @@ import { Side } from '../../../core/models/common.model';
         class="absolute h-2 bg-primary rounded-full"
         [ngStyle]="{ width: sliderRangePercent() + '%' }"
       ></div>
-      <flash-tooltip
+      <spark-tooltip
         [side]="tooltipSide()"
         [alwaysVisible]="tooltipVisibleAlways()"
         [distance]="17"
@@ -35,7 +35,7 @@ import { Side } from '../../../core/models/common.model';
         <h2 class="text-xs" slot="content">
           {{ value() | number : '1.0-0' }}
         </h2>
-      </flash-tooltip>
+      </spark-tooltip>
     </div>
   `,
   imports: [NgStyle, NgClass, TooltipComponent, DecimalPipe],

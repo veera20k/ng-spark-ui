@@ -1,13 +1,10 @@
 import { DOCUMENT } from '@angular/common';
 import {
-  ApplicationRef,
-  ComponentFactoryResolver,
   ComponentRef,
+  EnvironmentInjector,
   inject,
   Injectable,
-  Injector,
   TemplateRef,
-  ViewContainerRef,
 } from '@angular/core';
 import { DialogOptions } from '../../models/dialog-options.model';
 import { ModalBaseComponent } from '../../../components/ui/base/modal-base/modal-base.component';
@@ -18,41 +15,33 @@ import { createComponent } from '@angular/core';
 })
 export class ComponentLoaderService {
   private document = inject(DOCUMENT);
-  private resolver = inject(ComponentFactoryResolver);
-  private injector = inject(Injector);
+  private injector = inject(EnvironmentInjector);
   private componentRefs: ComponentRef<ModalBaseComponent>[] = [];
   options: DialogOptions[] = [];
 
   open(
     event: MouseEvent,
-    content: TemplateRef<unknown>,
+    template: TemplateRef<unknown>,
     options?: DialogOptions
   ) {
     event.stopPropagation();
-    // const appRef = this.injector.get(ApplicationRef);
-    // const compRef = createComponent(ModalBaseComponent, {
-    //   environmentInjector: appRef.injector,
-    //   projectableNodes: content.createEmbeddedView(null).rootNodes,
-    // });
-    // appRef.attachView(compRef.hostView);
-
-    const contentViewRef = content.createEmbeddedView(null);
-    const ref = this.resolver
-      .resolveComponentFactory(ModalBaseComponent)
-      .create(this.injector, [contentViewRef.rootNodes]);
+    const content = template.createEmbeddedView(null);
+    content.detectChanges();
+    const ref = createComponent(ModalBaseComponent, {
+      environmentInjector: this.injector,
+      projectableNodes: [content.rootNodes],
+    });
     this.componentRefs.push(ref);
     if (typeof options === 'object') {
       this.options.push(options);
       ref.setInput('options', Object.assign(ref.instance.options, options));
     }
-
     if (options?.disableScroll !== false) {
       this.disableScroll();
     }
     ref.instance.closeEvent.subscribe(() => {
       this.close();
     });
-    ref.instance.viewContainerRef.insert(contentViewRef);
     ref.hostView.detectChanges();
     this.document.body.appendChild(ref.location.nativeElement);
   }

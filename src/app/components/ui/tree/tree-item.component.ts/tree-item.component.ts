@@ -4,7 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BadgeComponent } from '../../badge/badge.component';
 
 @Component({
-  selector: 'flash-tree-item',
+  selector: 'spark-tree-item',
   standalone: true,
   template: `
     <div class="flex pb-2">

@@ -1,20 +1,19 @@
 import {
-  ComponentFactoryResolver,
   ComponentRef,
+  createComponent,
+  EnvironmentInjector,
   inject,
   Injectable,
-  Injector,
 } from '@angular/core';
-import { ToastComponent } from '../../../components/ui/toast/toast.component';
 import { DOCUMENT } from '@angular/common';
+import { ToastComponent } from '../../../components/ui/toast/toast.component';
 import { ToasterOptions } from '../../models/dialog-options.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ToasterService {
-  private factory = inject(ComponentFactoryResolver);
-  private injector = inject(Injector);
+  private injector = inject(EnvironmentInjector);
   private document = inject(DOCUMENT);
   private toasterRefs: ComponentRef<ToastComponent>[] = [];
   private options: ToasterOptions[] = [];
@@ -29,9 +28,9 @@ export class ToasterService {
   }
 
   private createToastComponent(options: ToasterOptions): ComponentRef<ToastComponent> {
-    const ref = this.factory
-      .resolveComponentFactory(ToastComponent)
-      .create(this.injector);
+    const ref = createComponent(ToastComponent, {
+      environmentInjector: this.injector,
+    })
     const refIdx = this.toasterRefs.length;
     ref.setInput('refIdx', refIdx);
     ref.setInput('options', { ...ref.instance.options, ...options });

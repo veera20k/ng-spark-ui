@@ -12,7 +12,7 @@ import { ClickOutsideDirective } from '../../../../core/directives/click-outside
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'flash-modal-base',
+  selector: 'spark-modal-base',
   standalone: true,
   template: `
   <div [ngClass]="{'bg-black/60 fixed inset-0 z-50 h-full w-full top-0 left-0': options.backdrop}">

@@ -13,15 +13,15 @@ import { PrismHighlightDirective } from '../../../core/directives/higlighter.dir
 import { HighlighterComponent } from '../highlighter/highlighter.component';
 
 @Component({
-  selector: 'flash-preview-code-tabs',
+  selector: 'spark-preview-code-tabs',
   template: `
-    <flash-tab
+    <spark-tab
       [smartItems]="[{ title: 'preview' }, { title: 'ts' }]"
       (onTabeSwitch)="onTabeSwitch($event)"
     >
       <div class="border p-3 mt-7 relative">
         <header class="flex justify-end absolute right-9 top-5 z-[1]">
-          <flash-copy-button (copyEvent)="onCopy()"></flash-copy-button>
+          <spark-copy-button (copyEvent)="onCopy()"></spark-copy-button>
         </header>
         <section
           class="h-[350px] overflow-y-auto rounded-sm"
@@ -29,20 +29,20 @@ import { HighlighterComponent } from '../highlighter/highlighter.component';
             'flex justify-center items-center p-10': currentTab() === 'preview'
           }"
         >
-          <div [ngClass]="{ hidden: currentTab() !== 'preview' }">
-            <ng-content select="[slot=preview]" />
-          </div>
-          <flash-highlighter
+          @if (currentTab() === 'preview') {
+          <ng-content select="[slot=preview]" />
+          }
+          <spark-highlighter
             language="javascript"
             [ngClass]="{ hidden: currentTab() !== 'ts' }"
           >
             <div #codeRef>
               <ng-content select="[slot=ts]" />
             </div>
-          </flash-highlighter>
+          </spark-highlighter>
         </section>
       </div>
-    </flash-tab>
+    </spark-tab>
   `,
   standalone: true,
   imports: [

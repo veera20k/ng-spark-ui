@@ -2,7 +2,7 @@ import { Directive, ElementRef, AfterViewInit, OnChanges } from '@angular/core';
 import * as Prism from 'prismjs';
 
 @Directive({
-  selector: '[flashHighlight]',
+  selector: '[sparkHighlight]',
   standalone: true,
 })
 export class PrismHighlightDirective implements AfterViewInit, OnChanges {

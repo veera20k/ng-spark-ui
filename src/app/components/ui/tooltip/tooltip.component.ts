@@ -12,13 +12,13 @@ import {
 import { Side } from '../../../core/models/common.model';
 
 @Component({
-  selector: 'flash-tooltip',
+  selector: 'spark-tooltip',
   standalone: true,
   template: `
     <ng-content select="[slot=trigger]"></ng-content>
     <div
       class="bg-primary px-2 py-1.5 leading-3 rounded-lg text-white min-w-[24px]"
-      id="flash-tooltip-content"
+      id="spark-tooltip-content"
       [ngStyle]="{ 'inset-area': side(), margin: distance() + 'px' }"
       [ngClass]="{ hidden: !isVisible(), visible: isVisible() }"
     >
@@ -44,9 +44,9 @@ import { Side } from '../../../core/models/common.model';
   `,
   styles: [
     `
-      #flash-tooltip-content {
+      #spark-tooltip-content {
         position: absolute;
-        position-anchor: --flash-tooltip-anchor;
+        position-anchor: --spark-tooltip-anchor;
       }
     `,
   ],
@@ -83,7 +83,7 @@ export class TooltipComponent {
         this.renderer.setStyle(
           triggerElement,
           'anchor-name',
-          '--flash-tooltip-anchor'
+          '--spark-tooltip-anchor'
         );
       }
     } catch (error) {

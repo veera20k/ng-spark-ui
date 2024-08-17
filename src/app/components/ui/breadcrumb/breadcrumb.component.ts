@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'flash-breadcrumb',
+  selector: 'spark-breadcrumb',
   standalone: true,
   template: `
     @for (item of itemsToDisplay().items; track item; let isLast = $last; let i
