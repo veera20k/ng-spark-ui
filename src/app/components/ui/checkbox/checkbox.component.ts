@@ -1,7 +1,6 @@
 import { NgClass } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 
 @Component({
   selector: 'flash-checkbox',
@@ -28,23 +27,22 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
     </label>
     <label
       [for]="htmlFor()"
-      class="cursoir-pointer select-none"
+      class="cursoir-pointer select-none ml-2"
       [ngClass]="{ 'opaccity-50 cursor-not-allowed': disabled() }"
-      >{{ label() }}</label
     >
+      <ng-content select="[slot=label]"></ng-content>
+    </label>
   `,
   host: {
     class: 'inline-flex items-center',
   },
-  imports: [FontAwesomeModule, NgClass],
+  imports: [NgClass],
 })
 export class CheckboxComponent {
   htmlFor = input('');
   disabled = input(false);
   checked = input(false);
   changeEvent = output<boolean>();
-  faCheck = faCheck;
-  label = input('');
 
   onCheck(value: boolean) {
     this.changeEvent.emit(value);

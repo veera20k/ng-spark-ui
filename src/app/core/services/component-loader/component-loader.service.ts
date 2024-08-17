@@ -1,14 +1,17 @@
 import { DOCUMENT } from '@angular/common';
 import {
+  ApplicationRef,
   ComponentFactoryResolver,
   ComponentRef,
   inject,
   Injectable,
   Injector,
   TemplateRef,
+  ViewContainerRef,
 } from '@angular/core';
 import { DialogOptions } from '../../models/dialog-options.model';
 import { ModalBaseComponent } from '../../../components/ui/base/modal-base/modal-base.component';
+import { createComponent } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +29,13 @@ export class ComponentLoaderService {
     options?: DialogOptions
   ) {
     event.stopPropagation();
+    // const appRef = this.injector.get(ApplicationRef);
+    // const compRef = createComponent(ModalBaseComponent, {
+    //   environmentInjector: appRef.injector,
+    //   projectableNodes: content.createEmbeddedView(null).rootNodes,
+    // });
+    // appRef.attachView(compRef.hostView);
+
     const contentViewRef = content.createEmbeddedView(null);
     const ref = this.resolver
       .resolveComponentFactory(ModalBaseComponent)
@@ -74,5 +84,4 @@ export class ComponentLoaderService {
     this.document.body.style.overflow = 'hidden';
     this.document.body.style.paddingRight = '15px';
   }
-
 }

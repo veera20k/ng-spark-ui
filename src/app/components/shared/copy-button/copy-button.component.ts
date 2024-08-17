@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { TabComponent } from '../../ui/tab/tab.component';
@@ -20,9 +20,11 @@ export class CopyButtonComponent {
   faCheck = faCheck;
   icon = faClipboard;
   timer!: ReturnType<typeof setTimeout>;
+  copyEvent = output();
   
   @HostListener('click', ['$event'])
   onClick(event: MouseEvent) {
+    this.copyEvent.emit();
     this.icon = faCheck;
     if (this.timer) {
       clearTimeout(this.timer);

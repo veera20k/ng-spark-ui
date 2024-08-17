@@ -5,8 +5,6 @@ import { ButtonComponent } from '../../ui/button/button.component';
 import { PreviewCodeTabsComponent } from '../../shared/preview-code-tabs/preview-code-tabs.component';
 import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-wrap.component";
 import { InstallationStepComponent } from "../../shared/installation-step/installation-step.component";
-import { ComponentLoaderServiceHighlighterComponent } from "../../shared/component-loader-service-highlighter/component-loader-highlighter.component";
-import { ClickoutsideHighlighterDirectiveComponent } from "../../shared/clickoutside-highlighter-directive/clickoutside-highlighter-directive.component";
 
 @Component({
   selector: 'flash-popover-page',
@@ -34,8 +32,6 @@ import { ClickoutsideHighlighterDirectiveComponent } from "../../shared/clickout
         copy and paste the following code into your components folder.</code
       >
     </flash-installation-step>
-    <flash-component-loader-service-highlighter />
-    <flash-clickoutside-highlighter-directive />
   `,
   imports: [
     PageHeaderComponent,
@@ -44,8 +40,6 @@ import { ClickoutsideHighlighterDirectiveComponent } from "../../shared/clickout
     PreviewCodeTabsComponent,
     InstallationWrapComponent,
     InstallationStepComponent,
-    ComponentLoaderServiceHighlighterComponent,
-    ClickoutsideHighlighterDirectiveComponent
 ],
 })
 export class PopoverPageComponent {

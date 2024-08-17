@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { PageHeaderComponent } from '../page-header/page-header.component';
 import { PreviewCodeTabsComponent } from '../../shared/preview-code-tabs/preview-code-tabs.component';
-import { InputComponent } from '../../ui/input/input.component';
 import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
+import { FlashLinkComponent } from '../../shared/link/flash-link.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
+import { faMicrophone } from '@fortawesome/free-solid-svg-icons/faMicrophone';
+import { InputBaseComponent } from '../../ui/base/input-base/input-base.component';
 
 @Component({
   selector: 'flash-input-page',
@@ -14,42 +18,87 @@ import { InstallationStepComponent } from '../../shared/installation-step/instal
       description="An input is a component that allows the user to enter and edit text."
     ></flash-page-header>
     <flash-preview-code-tabs>
-      <flash-input slot="preview">
-        <ng-container slot="label"> Label </ng-container>
-      </flash-input>
+      <ng-container slot="preview">
+        <input flashInput type="text" placeholder="Search" />
+      </ng-container>
       <ng-container slot="ts">
-        {{ currentTs }}
+        {{ default }}
       </ng-container>
     </flash-preview-code-tabs>
-    <flash-installation-wrap />
-    <flash-installation-step [stepNumber]="2" [code]="component">
-      <code slot="title"
-        >Create file <span class="underline">input.component.ts</span> and copy
-        and paste the following code into your components folder.</code
-      >
-    </flash-installation-step>
-    <flash-installation-step [stepNumber]="3" [code]="baseComponent">
-      <code slot="title"
-        >Create file <span class="underline">input-base.component.ts</span> and
-        copy and paste the following code into your components folder.</code
-      >
-    </flash-installation-step>
+    <flash-installation-wrap>
+      <flash-installation-step [stepNumber]="2">
+        <flash-link
+          href="https://github.com/veera20k/flash-ui/blob/main/src/app/components/ui/input/input.component.ts"
+          name="input.component.ts"
+          type="components"
+          slot="title"
+        ></flash-link>
+      </flash-installation-step>
+      <flash-installation-step [stepNumber]="3">
+        <flash-link
+          href="https://github.com/veera20k/flash-ui/blob/main/src/app/components/ui/base/input-base/input-base.component.ts"
+          name="input-base.component.ts"
+          type="components"
+          slot="title"
+        ></flash-link>
+      </flash-installation-step>
+    </flash-installation-wrap>
+
+    <br />
+    <h2 class="my-1 text-xl font-bold mb-2">Examples</h2>
+    <hr />
+    <br />
+    <h2 class="text-lg font-bold my-3">With Left Icon</h2>
+    <flash-preview-code-tabs>
+      <div class="relative" slot="preview">
+        <fa-icon
+          [icon]="faSearch"
+          slot="icon"
+          class="absolute top-2 left-2"
+        ></fa-icon>
+        <input flashInput type="text" placeholder="Search" class="pl-8" />
+      </div>
+      <ng-container slot="Ts">
+        {{ withLeftIcon }}
+      </ng-container>
+    </flash-preview-code-tabs>
+
+    <br />
+    <h2 class="text-lg font-bold my-3">With Right Icon</h2>
+    <flash-preview-code-tabs>
+      <div class="relative" slot="preview">
+        <input flashInput type="text" placeholder="Search" class="pr-8" />
+        <fa-icon
+          [icon]="faSearch"
+          slot="icon"
+          class="absolute top-2 right-2"
+        ></fa-icon>
+      </div>
+      <ng-container slot="Ts">
+        {{ withRightIcon }}
+      </ng-container>
+    </flash-preview-code-tabs>
   `,
   imports: [
     PageHeaderComponent,
     PreviewCodeTabsComponent,
-    InputComponent,
     InstallationWrapComponent,
     InstallationStepComponent,
+    FlashLinkComponent,
+    FontAwesomeModule,
+    InputBaseComponent,
   ],
 })
 export class InputPageComponent {
-  currentTs = `
+  faSearch = faSearch;
+  faMicrophone = faMicrophone;
+
+  default = `
   import { Component } from "@angular/core";
   import { InputComponent } from "../../ui/input/input.component";
 
   @Component({
-    selector: 'flash-input-page',
+    selector: 'flash-input-demo',
     standalone: true,
     template: \`
       <flash-input slot="preview">
@@ -58,69 +107,47 @@ export class InputPageComponent {
     \`,
     imports: [InputComponent],
   })
-  export class InputPageComponent {
-  }`;
+  export class InputDemoComponent {}`;
 
-  baseComponent = `
-  import { Component } from '@angular/core';
-
-  @Component({
-    selector: 'input[flashInput]',
-    template: \`\`,
-    standalone: true,
-    host: {
-      class:
-        'flex h-10 w-full rounded-md border border-input bg-background px-2 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:cursor-pointer placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
-    },
-  })
-  export class InputBaseComponent {}`;
-
-  component = `
-  import { NgClass, NgTemplateOutlet } from '@angular/common';
-  import { Component, input } from '@angular/core';
-  import { InputBaseComponent } from '../base/input-base/input-base.component';
+  withLeftIcon = `
+  import { Component } from "@angular/core";
+  import { InputComponent } from "../../ui/input/input.component";
 
   @Component({
-    selector: 'flash-input',
+    selector: 'flash-input-demo',
     standalone: true,
     template: \`
-      <label class="text-sm font-medium">
-        <ng-content select="[slot=label]">
-        </ng-content>
-      </label>
-      <ng-template #input let-iconPadding="iconpadding">
-        <input
-          flashInput
-          [type]="type()"
-          [placeholder]="placeholder()"
-          [disabled]="disabled()"
-          [value]="value()"
-          [ngClass]="[iconPadding|| '', !border() ? 'border-none' : '', !outlined() ? 'focus-visible:ring-0' : '']"
-        />
-      </ng-template>
-      @if (iconSide()) {
-          <div class="relative">
-              <div class="absolute top-2" [ngClass]="iconSide() === 'left' ? 'left-3' : 'right-3'">
-                  <ng-content select="[slot=icon]"/>
-              </div>
-              <ng-container [ngTemplateOutlet]="input" [ngTemplateOutletContext]="{iconPadding: iconSide() === 'left' ? 'pl-8' : 'pr-8'}"></ng-container>
-          </div>
-      } @else {
-          <ng-container [ngTemplateOutlet]="input"></ng-container>
-      }
+      <div class="relative" slot="preview">
+        <fa-icon
+          [icon]="faSearch"
+          slot="icon"
+          class="absolute top-2 left-2"
+        ></fa-icon>
+        <input flashInput type="text" placeholder="Search" class="pl-8" />
+      </div>
     \`,
-    host: {
-      class :"grid w-full max-w-sm items-center gap-1.5"
-    },
-    imports: [NgClass, NgTemplateOutlet, InputBaseComponent]
+    imports: [InputComponent],
   })
-  export class InputComponent {
-    placeholder = input('');
-    type = input('text');
-    value = input('');
-    disabled = input(false);
-    border = input(true);
-    outlined = input(false);
-    iconSide = input<'left' | 'right'>('left');
-  }`;
+  export class InputDemoComponent {}`;
+
+  withRightIcon = `
+  import { Component } from "@angular/core";
+  import { InputComponent } from "../../ui/input/input.component";
+
+  @Component({
+    selector: 'flash-input-demo',
+    standalone: true,
+    template: \`
+      <div class="relative" slot="preview">
+        <input flashInput type="text" placeholder="Search" class="pr-8" />
+        <fa-icon
+          [icon]="faSearch"
+          slot="icon"
+          class="absolute top-2 right-2"
+        ></fa-icon>
+      </div>
+    \`,
+    imports: [InputComponent],
+  })
+  export class InputDemoComponent {}`;
 }

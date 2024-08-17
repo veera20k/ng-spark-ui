@@ -1,12 +1,12 @@
-
 import { Component } from '@angular/core';
 import { PageHeaderComponent } from '../page-header/page-header.component';
 import { PreviewCodeTabsComponent } from '../../shared/preview-code-tabs/preview-code-tabs.component';
 import { BadgeComponent } from '../../ui/badge/badge.component';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-wrap.component";
-import { InstallationStepComponent } from "../../shared/installation-step/installation-step.component";
+import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
+import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
+import { FlashLinkComponent } from '../../shared/link/flash-link.component';
 
 @Component({
   selector: 'flash-badge-page',
@@ -17,25 +17,58 @@ import { InstallationStepComponent } from "../../shared/installation-step/instal
       description="A badge is a small label used to call out new or unread information."
     ></flash-page-header>
     <flash-preview-code-tabs>
-      <flash-badge slot="preview">
-          Badge
-      </flash-badge>
+      <flash-badge slot="preview"> Primary </flash-badge>
       <ng-container slot="Ts">
-        {{demoTs}}
+        {{ getCodeWithVariant('primary') }}
       </ng-container>
     </flash-preview-code-tabs>
-    <flash-installation-wrap/>
-    <flash-installation-step [stepNumber]="2" [code]="component">
-      <code slot="title"
-        >Create file <span class="underline">badge.component.ts</span> and copy
-        and paste the following code into your components folder.</code
-      >
-    </flash-installation-step>
-    <flash-installation-step [stepNumber]="3" [code]="badgeVaiantModel">
-      <code slot="title"
-        >Update or Create model file with the following code.</code
-      >
-    </flash-installation-step>
+    <flash-installation-wrap>
+      <flash-installation-step [stepNumber]="2">
+        <flash-link
+          href="https://github.com/veera20k/flash-ui/blob/main/src/app/components/ui/badge/badge.component.ts"
+          name="badge.component.ts"
+          type="components"
+          slot="title"
+        ></flash-link>
+      </flash-installation-step>
+      <flash-installation-step [stepNumber]="3" [code]="badgeVaiantModel">
+        <code slot="title"
+          >Update or Create model file with the following code.</code
+        >
+      </flash-installation-step>
+    </flash-installation-wrap>
+    
+    <br />
+    <h2 class="my-1 text-xl font-bold mb-2">Examples</h2>
+    <hr>
+    <br />
+    <h2 class="text-lg font-bold my-3">Secondary</h2>
+    <flash-preview-code-tabs>
+      <flash-badge slot="preview" variant="secondary"> Secondary </flash-badge>
+      <ng-container slot="Ts">
+        {{ getCodeWithVariant('secondary') }}
+      </ng-container>
+    </flash-preview-code-tabs>
+
+    <br />
+    <h2 class="text-lg font-bold my-3">Destructive</h2>
+    <flash-preview-code-tabs>
+      <flash-badge slot="preview" variant="destructive">
+        Destructive
+      </flash-badge>
+      <ng-container slot="Ts">
+        {{ getCodeWithVariant('destructive') }}
+      </ng-container>
+    </flash-preview-code-tabs>
+
+    <br />
+    <h2 class="text-lg font-bold my-3">Outlined</h2>
+    <flash-preview-code-tabs>
+      <flash-badge slot="preview" variant="outlined"> Outlined </flash-badge>
+      <ng-container slot="Ts">
+        {{ getCodeWithVariant('outlined') }}
+      </ng-container>
+    </flash-preview-code-tabs>
   `,
   imports: [
     PageHeaderComponent,
@@ -43,63 +76,32 @@ import { InstallationStepComponent } from "../../shared/installation-step/instal
     PreviewCodeTabsComponent,
     FontAwesomeModule,
     InstallationWrapComponent,
-    InstallationStepComponent
-],
+    InstallationStepComponent,
+    FlashLinkComponent,
+  ],
 })
 export class BadgePageComponent {
   faArrowUpRightFromSquare = faArrowUpRightFromSquare;
 
-  demoTs = `
+  getCodeWithVariant = (variant: string) => {
+  return `
   import { Component } from '@angular/core';
   import { BadgeComponent } from '../../ui/badge/badge.component';
   @Component({
     selector: 'flash-badge-demo',
     standalone: true,
     template: \`
-      <flash-badge>
-        Badge
+      <flash-badge variant="${variant}">
+        ${variant}
       </flash-badge>
       \`,
-    imports: [
-      BadgeComponent
-    ],
-  })
+      imports: [
+        BadgeComponent
+      ],
+    })
   export class BadgeDemoComponent {}`;
-
-  component = `
-  import { Component, computed, HostBinding, input } from '@angular/core';
-  import { BadgeVariant } from '../../../core/models/common.model';
-  @Component({
-    selector: 'flash-badge',
-    standalone: true,
-    template: \`\<ng-content/>\`\,
-    host: {
-      class:
-        'inline-flex items-center rounded-md border px-2 py-0.5 text-xs transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 gap-1 cursor-pointer',
-    },
-  })
-  export class BadgeComponent {
-    varient = input<BadgeVariant>('primary');
-
-    badgeVairentClass = computed(() => {
-      switch (this.varient()) {
-        case 'primary':
-          return 'text-primary-foreground bg-primary hover:bg-primary/90';
-        case 'secondary':
-          return 'text-secondary-foreground bg-secondary hover:bg-secondary/80';
-        case 'destructive':
-          return 'bg-destructive text-destructive-foreground hover:bg-destructive/90';
-        case 'outlined':
-          return 'border border-input bg-background hover:bg-accent hover:text-accent-foreground';
-      }
-    });
-
-    @HostBinding('class') get setBadgeVairentClass() {
-      return this.badgeVairentClass();
-    }
-  }`;
+  };
 
   badgeVaiantModel = `
   export type BadgeVariant = 'primary' | 'secondary' | 'destructive' | 'outlined'`;
-
 }

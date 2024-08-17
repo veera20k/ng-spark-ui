@@ -6,6 +6,7 @@ import { AccordionDirective } from '../../../core/directives/accordion.directive
 import { BadgeComponent } from '../../ui/badge/badge.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
 import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
+import { FlashLinkComponent } from '../../shared/link/flash-link.component';
 
 @Component({
   selector: 'flash-accordion-page',
@@ -37,45 +38,66 @@ import { InstallationWrapComponent } from '../../shared/instllation-wrap/install
         </flash-accordion-item>
       </div>
       <ng-container slot="Ts">
-        {{ currentTs }}
+        {{ getAccCode('single') }}
       </ng-container>
     </flash-preview-code-tabs>
-    <flash-installation-wrap >
-    <flash-installation-step [stepNumber]="2">
-      <code slot="title"
-        >Copy accordion-item.component.ts
-        <a
-          class="hover:underline text-blue-500"
+    <flash-installation-wrap>
+      <flash-installation-step [stepNumber]="2">
+        <flash-link
           href="https://github.com/veera20k/flash-ui/blob/main/src/app/components/ui/accoridon-item/accordion-item.component.ts"
-          target="_blank"
-          >here</a
-        >
-        and copy and paste the following code into your components folder.</code
-      >
-    </flash-installation-step>
-    <flash-installation-step [stepNumber]="3">
-    <code slot="title"
-        >Copy accordion.directive.ts
-        <a
-          class="hover:underline text-blue-500"
+          name="accordion-item.component.ts"
+          type="components"
+          slot="title"
+        ></flash-link>
+      </flash-installation-step>
+      <flash-installation-step [stepNumber]="3">
+        <flash-link
           href="https://github.com/veera20k/flash-ui/blob/main/src/app/core/directives/accordion.directive.ts"
-          target="_blank"
-          >here</a
+          name="accordion.directive.ts"
+          type="directives"
+          slot="title"
+        ></flash-link>
+      </flash-installation-step>
+      <flash-installation-step
+        [stepNumber]="4"
+        [code]="accordionCss"
+        [language]="'css'"
+      >
+        <code slot="title"
+          >Update your <span class="underline">styles.css</span> file.</code
         >
-        and copy and paste the following code into your directives folder.</code
-      >
-    </flash-installation-step>
-    <flash-installation-step
-      [stepNumber]="4"
-      [code]="accordionCss"
-      [language]="'css'"
-    >
-      <code slot="title"
-        >Copy and past this css into your
-        <span class="underline">styles.css</span> file.</code
-      >
-    </flash-installation-step>
-  </flash-installation-wrap>
+      </flash-installation-step>
+    </flash-installation-wrap>
+    <br />
+    <h2 class="my-1 text-xl font-bold">Examples</h2>
+    <br />
+    <h2 class="text-lg">Multiple Accordion</h2>
+    <br />
+    <flash-preview-code-tabs>
+      <div flashAccordion mode="multiple" slot="preview">
+        <flash-accordion-item>
+          <span slot="trigger"> Is it accessible? </span>
+          <span slot="content">
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </span>
+        </flash-accordion-item>
+        <flash-accordion-item>
+          <span slot="trigger"> Is it accessible? </span>
+          <span slot="content">
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </span>
+        </flash-accordion-item>
+        <flash-accordion-item>
+          <span slot="trigger"> Is it accessible? </span>
+          <span slot="content">
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </span>
+        </flash-accordion-item>
+      </div>
+      <ng-container slot="Ts">
+        {{ getAccCode('multiple') }}
+      </ng-container>
+    </flash-preview-code-tabs>
   `,
   imports: [
     PageHeaderComponent,
@@ -85,11 +107,12 @@ import { InstallationWrapComponent } from '../../shared/instllation-wrap/install
     InstallationStepComponent,
     BadgeComponent,
     InstallationWrapComponent,
+    FlashLinkComponent,
   ],
 })
 export class AccordionPageComponent {
-  currentTs = `
-    // accordion-demo.component.ts
+  getAccCode = (mode: string) => {
+    return `
     import { Component } from '@angular/core';
     import { AccordionItemComponent } from './accordion-item/accordion-item.component';
     import { AccordionDirective } from '../../../core/directives/accordion.directive';
@@ -98,7 +121,7 @@ export class AccordionPageComponent {
     selector: 'app-accordion-demo',
     standalone: true,
     templateUrl: '
-    <div flashAccordion mode="single">
+    <div flashAccordion mode="${mode}">
       <flash-accordion-item>
         <span slot="trigger"> Is it accessible? </span>
         <span slot="content">
@@ -124,6 +147,7 @@ export class AccordionPageComponent {
       ]
     })
     export class AccordionComponent {}`;
+  };
 
   accordionCss = `
   .accordion-body {
@@ -134,5 +158,4 @@ export class AccordionPageComponent {
   .accordion-open {
     grid-template-rows: 1fr;
   }`;
-
 }

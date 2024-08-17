@@ -38,7 +38,7 @@ import {
 export class BreadcrumbComponent {
   items = input.required<string[]>();
   seperator = contentChild<TemplateRef<unknown>>('seperator');
-  max = input(4);
+  max = input(3);
 
   itemsToDisplay = computed(() => {
     const itemsToReturn: { items: string[]; nested: string[] } = {
@@ -57,4 +57,10 @@ export class BreadcrumbComponent {
     });
     return itemsToReturn;
   });
+
+  ngOnInit(): void {
+    if ( this.max() < 2) {
+      throw new Error('Max must be greater than 2');
+    }
+  }
 }

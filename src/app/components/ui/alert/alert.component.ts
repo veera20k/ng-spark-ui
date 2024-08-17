@@ -16,7 +16,7 @@ import { Component } from '@angular/core';
   `,
   host: {
     class:
-      'relative w-full rounded-lg border p-4 bg-background text-foreground',
+      'relative w-full rounded-lg border p-4 bg-background text-foreground block',
     ['attr.role']: 'alert',
   },
 })

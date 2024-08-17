@@ -3,7 +3,6 @@ import {
   Component,
   computed,
   ElementRef,
-  Host,
   HostListener,
   inject,
   input,
@@ -17,7 +16,7 @@ import { ButtonComponent } from '../button/button.component';
   standalone: true,
   template: `
     <div
-      class="shadow fixed p-3 flex flex-row gap-2 items-center bg-white border max-w-[350px] rounded-xl group"
+      class="shadow fixed z-[1] p-3 flex flex-row gap-2 items-center bg-white border max-w-[350px] rounded-xl group"
       [ngClass]="toastClass()"
     >
       <div class="flex-1 flex flex-col gap-2">

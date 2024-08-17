@@ -6,6 +6,7 @@ import { faTerminal } from '@fortawesome/free-solid-svg-icons/faTerminal';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
+import { FlashLinkComponent } from '../../shared/link/flash-link.component';
 
 @Component({
   selector: 'flash-alert-page',
@@ -27,13 +28,16 @@ import { InstallationStepComponent } from '../../shared/installation-step/instal
         {{ demoTs }}
       </ng-container>
     </flash-preview-code-tabs>
-    <flash-installation-wrap />
-    <flash-installation-step [stepNumber]="2" [code]="componet">
-      <code slot="title"
-        >Create file <span class="underline">alert.component.ts</span> and copy
-        and paste the following code into your components folder.</code
-      >
-    </flash-installation-step>
+    <flash-installation-wrap>
+      <flash-installation-step [stepNumber]="2">
+        <flash-link
+          href="https://github.com/veera20k/flash-ui/tree/main/src/app/components/ui/alert"
+          name="alert.component.ts"
+          type="components"
+          slot="title"
+        ></flash-link>
+      </flash-installation-step>
+    </flash-installation-wrap>
   `,
   imports: [
     PageHeaderComponent,
@@ -42,6 +46,7 @@ import { InstallationStepComponent } from '../../shared/installation-step/instal
     FontAwesomeModule,
     InstallationWrapComponent,
     InstallationStepComponent,
+    FlashLinkComponent,
   ],
 })
 export class AlertPageComponent {
@@ -67,28 +72,4 @@ export class AlertPageComponent {
     standalone: true,
   })
   export class AlertDemoComponent {}`;
-
-  componet = `
-  import { Component } from '@angular/core';
-
-  @Component({
-    selector: 'flash-alert',
-    standalone: true,
-    template: \`
-      <span class="absolute top-3.5 left-3">
-        <ng-content select="[slot=icon]"></ng-content>
-      </span>
-      <h2 class="font-medium leading-none tracking-tight pl-5">
-        <ng-content select="[slot=title]"></ng-content>
-      </h2>
-      <div class="text-sm pl-5">
-        <ng-content select="[slot=description]"></ng-content>
-      </div>\`,
-    host: {
-      class:
-        'relative w-full rounded-lg border p-4 bg-background text-foreground',
-      ['attr.role']: 'alert',
-    },
-  })
-  export class AlertComponent {}`;
 }

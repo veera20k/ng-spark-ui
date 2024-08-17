@@ -6,8 +6,7 @@ import { ButtonComponent } from '../../ui/button/button.component';
 import { ComponentLoaderService } from '../../../core/services/component-loader/component-loader.service';
 import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
-import { ComponentLoaderServiceHighlighterComponent } from '../../shared/component-loader-service-highlighter/component-loader-highlighter.component';
-import { ClickoutsideHighlighterDirectiveComponent } from '../../shared/clickoutside-highlighter-directive/clickoutside-highlighter-directive.component';
+import { FlashLinkComponent } from '../../shared/link/flash-link.component';
 
 @Component({
   selector: 'flash-dialog-page',
@@ -37,15 +36,35 @@ import { ClickoutsideHighlighterDirectiveComponent } from '../../shared/clickout
         {{ currentTs }}
       </ng-container>
     </flash-preview-code-tabs>
-    <flash-installation-wrap />
-    <flash-installation-step [stepNumber]="2" [code]="component">
-      <code slot="title"
-        >Create file <span class="underline">modal-base.component.ts</span> and
-        copy and paste the following code into your components folder.</code
-      >
-    </flash-installation-step>
-    <flash-component-loader-service-highlighter />
-    <flash-clickoutside-highlighter-directive />
+    <flash-installation-wrap>
+      <flash-installation-step [stepNumber]="2">
+        <flash-link
+          href="https://github.com/veera20k/flash-ui/blob/main/src/app/components/ui/dialog/dialog.component.ts"
+          name="dialog.component.ts"
+          type="components"
+          slot="title"
+        ></flash-link>
+      </flash-installation-step>
+      <flash-installation-step [stepNumber]="3">
+        <flash-link
+          href="https://github.com/veera20k/flash-ui/blob/main/src/app/core/services/component-loader/component-loader.service.ts"
+          name="component-loader.service.ts"
+          type="services"
+          slot="title"
+        ></flash-link>
+      </flash-installation-step>
+      <flash-installation-step [stepNumber]="4">
+        <flash-link
+          href="https://github.com/veera20k/flash-ui/blob/main/src/app/core/directives/click-outside.directive.ts"
+          name="click-outside.directive.ts"
+          type="directives"
+          slot="title"
+        ></flash-link>
+      </flash-installation-step>
+      <flash-installation-step [stepNumber]="5" [code]="animation">
+        <code slot="title"> Update you tailwind.config.js file. </code>
+      </flash-installation-step>
+    </flash-installation-wrap>
   `,
   imports: [
     PageHeaderComponent,
@@ -54,8 +73,7 @@ import { ClickoutsideHighlighterDirectiveComponent } from '../../shared/clickout
     ButtonComponent,
     InstallationWrapComponent,
     InstallationStepComponent,
-    ComponentLoaderServiceHighlighterComponent,
-    ClickoutsideHighlighterDirectiveComponent,
+    FlashLinkComponent,
   ],
 })
 export class DialogPageComponent {
@@ -72,7 +90,7 @@ export class DialogPageComponent {
   import { ComponentLoaderService } from '../../../core/services/component-loader/component-loader.service';
 
   @Component({
-    selector: 'app-dialog',
+    selector: 'app-dialog-demo',
     standalone: true,
     template: \`
         <flash-button
@@ -96,7 +114,7 @@ export class DialogPageComponent {
       ButtonComponent,
     ],
   })
-  export class DialogComponent {
+  export class DialogDemoComponent {
     private cmptLoaderService = inject(ComponentLoaderService);
 
     open(event: MouseEvent, dialogRef: TemplateRef<unknown>) {
@@ -104,41 +122,17 @@ export class DialogPageComponent {
     }
   }`;
 
-  component = `
-  import { Component, ElementRef, HostListener, inject, Input, output, ViewContainerRef } from '@angular/core';
-  import { DialogOptions } from '../../../../core/models/dialog-options.model';
-  import { ClickOutsideDirective } from '../../../../core/directives/click-outside.directive';
-  import { NgClass } from '@angular/common';
-
-  @Component({
-    selector: 'flash-modal-base',
-    standalone: true,
-    template: \`
-    <div [ngClass]="{'bg-black/60 fixed inset-0 z-50 h-full w-full top-0 left-0': options.backdrop}">
-    <div clickOutside (clickOutsideEvent)="options.closeOnBackdropClick && removeModal()" class="w-fit">
-        <ng-content/>
-      </div>
-    </div>
-    \`,
-    imports: [ClickOutsideDirective, NgClass],
-  })
-  export class ModalBaseComponent {
-    elementRef = inject(ElementRef);
-    closeEvent = output();
-    viewContainerRef = inject(ViewContainerRef);
-    @Input() options: DialogOptions = {
-      backdrop: true,
-      closeOnBackdropClick: true,
-      disableScroll: true,
-    };
-
-    @HostListener('document:keydown.escape', ['$event'])
-    onKeydownHandler() {
-      this.removeModal();
-    }
-
-    removeModal() {
-      this.closeEvent.emit();
-    }
-  }`;
+  animation = `
+    keyframes: {
+      "scale-in": {
+        "0%": {
+          transform: "translate(-50%, -50%) scale(0.9)",
+          opacity: "0.8",
+        },
+        "100%": { transform: "translate(-50%, -50%) scale(1)", opacity: "1" },
+      },
+    },
+    animation: {
+      "scale-in": "scale-in 0.2s ease-in-out",
+    }`;
 }
