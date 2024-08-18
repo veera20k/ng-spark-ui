@@ -6,15 +6,13 @@ import { SidebarComponent } from './core/layout/sidebar/sidebar.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    HeaderComponent,
-    SidebarComponent,
-  ],
+  imports: [RouterOutlet, HeaderComponent, SidebarComponent],
   template: `
-    <spark-header/>
+    <spark-header />
     <div class="mt-[50px] lg:px-12 px-6 pt-7 pb-4 grid grid-cols-5 gap-4">
-      <spark-sidebar class="col-span-1 hidden lg:block"/>
+      <div class="col-span-1 hidden lg:block">
+        <spark-sidebar class="w-max fixed" />
+      </div>
       <div class="col-span-5 lg:col-span-4">
         <router-outlet></router-outlet>
       </div>

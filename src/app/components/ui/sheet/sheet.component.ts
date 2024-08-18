@@ -11,21 +11,18 @@ import { Side } from '../../../core/models/common.model';
       <ng-content select="[slot=trigger]"> </ng-content>
     </div>
     <ng-template #sheetRef>
-      <div
-        class="bg-white p-3 absolute"
-        [ngClass]="sheetStyles()"
-      >
+      <div class="bg-white p-3 absolute" [ngClass]="sheetStyles()">
         <span
           class="absolute top-1.5 right-2 cursor-pointer"
           (click)="closeSheet()"
         >
-          <ng-content select="[slot=close]"></ng-content>
+          ✖
         </span>
         <ng-content select="[slot=content]"></ng-content>
       </div>
     </ng-template>
   `,
-  imports: [NgClass]
+  imports: [NgClass],
 })
 export class SheetComponent {
   side = input<Side>('left');
