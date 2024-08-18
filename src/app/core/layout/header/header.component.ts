@@ -21,6 +21,9 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 
         <img src="assets/images/logo.svg" alt="Logo" class="h-7 w-7 my-auto" />
         <h2 class="text-2xl font-bold ml-2">spark UI</h2>
+        <div class="rounded-md ml-2 bg-yellow-300 px-1.5 py-0.5 text-xs font-medium">
+          Beta
+        </div>
       </div>
 
       <div class="flex gap-2 text-sm">
