@@ -5,9 +5,9 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 @Component({
   selector: 'spark-header',
   template: `<div
-    class="h-[50px] border-b w-full border-gray-200 shadow-sm top-0 left-0 fixed backdrop-blur-md z-[1]"
+    class="h-[var(--header-height)] border-b w-full border-gray-200 shadow-sm top-0 left-0 fixed backdrop-blur-md z-[1]"
   >
-    <div class="flex items-center justify-between py-2 lg:px-12 px-6">
+    <div class="flex items-center justify-between py-2 lg:px-12 px-6 h-full">
       <div class="flex items-center">
         <spark-sheet>
           <span

@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --header-height: 60px;
+}
 
 @font-face {
   font-family: 'poppins-regular';
