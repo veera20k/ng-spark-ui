@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import {
+  ApplicationRef,
   ComponentRef,
   EnvironmentInjector,
   inject,
@@ -17,6 +18,7 @@ export class ComponentLoaderService {
   private document = inject(DOCUMENT);
   private injector = inject(EnvironmentInjector);
   private componentRefs: ComponentRef<ModalBaseComponent>[] = [];
+  private appRef  = inject(ApplicationRef);
   options: DialogOptions[] = [];
 
   open(
@@ -42,7 +44,7 @@ export class ComponentLoaderService {
     ref.instance.closeEvent.subscribe(() => {
       this.close();
     });
-    ref.hostView.detectChanges();
+    this.appRef.attachView(ref.hostView);
     this.document.body.appendChild(ref.location.nativeElement);
   }
 
