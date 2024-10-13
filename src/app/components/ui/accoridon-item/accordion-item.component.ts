@@ -20,7 +20,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown';
         <ng-content select="[slot=trigger]" />
         <fa-icon
           [icon]="faChevronDown"
-          class="fa-sm transition-all"
+          class="transition-all mb-auto text-sm"
           [ngClass]="isOpen() ? 'rotate-180' : ''"
         ></fa-icon>
       </div>
