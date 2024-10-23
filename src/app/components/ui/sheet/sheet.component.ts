@@ -7,11 +7,11 @@ import { Side } from '../../../core/models/common.model';
   selector: 'spark-sheet',
   standalone: true,
   template: `
-    <div (click)="openSheet($event, sheetRef)">
+    <div (click)="openSheet(sheetRef)">
       <ng-content select="[slot=trigger]"> </ng-content>
     </div>
     <ng-template #sheetRef>
-      <div class="bg-white p-3 absolute" [ngClass]="sheetStyles()">
+      <div class="bg-white p-3 absolute overflow-y-auto" [ngClass]="sheetStyles()">
         <span
           class="absolute top-1.5 right-2 cursor-pointer"
           (click)="closeSheet()"
@@ -28,8 +28,8 @@ export class SheetComponent {
   side = input<Side>('left');
   cmptLoaderService = inject(ComponentLoaderService);
 
-  openSheet(event: MouseEvent, sheetRef: TemplateRef<unknown>) {
-    this.cmptLoaderService.open(event, sheetRef);
+  openSheet(sheetRef: TemplateRef<unknown>) {
+    this.cmptLoaderService.open(sheetRef);
   }
 
   closeSheet() {

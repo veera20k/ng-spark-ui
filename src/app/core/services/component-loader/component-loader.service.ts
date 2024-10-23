@@ -22,13 +22,11 @@ export class ComponentLoaderService {
   options: DialogOptions[] = [];
 
   open(
-    event: MouseEvent,
     template: TemplateRef<unknown>,
     options?: DialogOptions
   ) {
-    event.stopPropagation();
     const content = template.createEmbeddedView(null);
-    content.detectChanges();
+    this.appRef.attachView(content);  
     const ref = createComponent(ModalBaseComponent, {
       environmentInjector: this.injector,
       projectableNodes: [content.rootNodes],

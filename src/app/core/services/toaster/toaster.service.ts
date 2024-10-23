@@ -18,8 +18,7 @@ export class ToasterService {
   private toasterRefs: ComponentRef<ToastComponent>[] = [];
   private options: ToasterOptions[] = [];
 
-  public open(event: MouseEvent, options: ToasterOptions) {
-    event.stopPropagation();
+  public open(options: ToasterOptions) {
     this.options.push(options);
     const ref = this.createToastComponent(options);
     this.toasterRefs.push(ref);

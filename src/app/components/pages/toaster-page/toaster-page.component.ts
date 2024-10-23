@@ -22,30 +22,30 @@ import { InstallationWrapComponent } from "../../shared/instllation-wrap/install
       <div class="grid grid-cols-3 gap-3" slot="preview">
         <spark-button
           variant="outlined"
-          (clickEvent)="open($event, 'top-right')"
+          (clickEvent)="open('top-right')"
           >Top Right</spark-button
         >
         <spark-button
           variant="outlined"
-          (clickEvent)="open($event, 'top-center')"
+          (clickEvent)="open('top-center')"
           >Top center</spark-button
         >
-        <spark-button variant="outlined" (clickEvent)="open($event, 'top-left')"
+        <spark-button variant="outlined" (clickEvent)="open('top-left')"
           >Top Left</spark-button
         >
         <spark-button
           variant="outlined"
-          (clickEvent)="open($event, 'bottom-right')"
+          (clickEvent)="open('bottom-right')"
           >Bottom Right</spark-button
         >
         <spark-button
           variant="outlined"
-          (clickEvent)="open($event, 'bottom-center')"
+          (clickEvent)="open('bottom-center')"
           >Bottom Center</spark-button
         >
         <spark-button
           variant="outlined"
-          (clickEvent)="open($event, 'bottom-left')"
+          (clickEvent)="open('bottom-left')"
           >Bottom Left</spark-button
         >
       </div>
@@ -85,8 +85,8 @@ import { InstallationWrapComponent } from "../../shared/instllation-wrap/install
 export class ToasterPageComponent {
   private toasterService = inject(ToasterService);
 
-  open(event: MouseEvent, side: ToasterPosition) {
-    this.toasterService.open(event, {
+  open(side: ToasterPosition) {
+    this.toasterService.open({
       title: 'My Toaster',
       description:
         'This is a toaster description text that can be long or short',
@@ -111,30 +111,30 @@ export class ToasterPageComponent {
         <div class="grid grid-cols-3 gap-3">
           <spark-button
             variant="outlined"
-            (clickEvent)="open($event, 'top-right')"
+            (clickEvent)="open('top-right')"
             >Top Right</spark-button
           >
           <spark-button
             variant="outlined"
-            (clickEvent)="open($event, 'top-center')"
+            (clickEvent)="open('top-center')"
             >Top center</spark-button
           >
-          <spark-button variant="outlined" (clickEvent)="open($event, 'top-left')"
+          <spark-button variant="outlined" (clickEvent)="open('top-left')"
             >Top Left</spark-button
           >
           <spark-button
             variant="outlined"
-            (clickEvent)="open($event, 'bottom-right')"
+            (clickEvent)="open('bottom-right')"
             >Bottom Right</spark-button
           >
           <spark-button
             variant="outlined"
-            (clickEvent)="open($event, 'bottom-center')"
+            (clickEvent)="open('bottom-center')"
             >Bottom Center</spark-button
           >
           <spark-button
             variant="outlined"
-            (clickEvent)="open($event, 'bottom-left')"
+            (clickEvent)="open('bottom-left')"
             >Bottom Left</spark-button
           >
         </div>
@@ -147,8 +147,8 @@ export class ToasterPageComponent {
   export class ToasterDemoComponent {
     private toasterService = inject(ToasterService);
 
-    open(event: MouseEvent, side: ToasterPosition) {
-      this.toasterService.open(event, {
+    open(side: ToasterPosition) {
+      this.toasterService.open({
         title: 'My Toaster',
         description:
           'This is a toaster description text that can be long or short',

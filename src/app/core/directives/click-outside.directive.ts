@@ -8,7 +8,7 @@ export class ClickOutsideDirective {
   private elementRef = inject(ElementRef);
   clickOutsideEvent = output();
 
-  @HostListener('document:click', ['$event.target'])
+  @HostListener('document:mouseup', ['$event.target'])
   public onClickHandler(targetElement: HTMLElement) {
     const clickedInside = this.elementRef.nativeElement.contains(targetElement);
     if (!clickedInside) {

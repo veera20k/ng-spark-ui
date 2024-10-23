@@ -15,9 +15,9 @@ import { Side } from '../../../core/models/common.model';
   standalone: true,
   template: `
     <div
-      (mouseover)="hoverToggle() && !alwaysOpen() && toggle($event)"
+      (mouseover)="hoverToggle() && !alwaysOpen() && toggle()"
       (mouseout)="hoverToggle() && cmptLoaderService.close()"
-      (click)="!alwaysOpen() && toggle($event)"
+      (click)="!alwaysOpen() && toggle()"
       id="spark-popover-trigger"
     >
       <ng-content select="[slot=trigger]" />
@@ -65,7 +65,6 @@ export class PopoverComponent {
   ngOnInit(): void {
     if (this.alwaysOpen()) {
       this.cmptLoaderService.open(
-        new MouseEvent('click'),
         this.popoverTemplate,
         {
           backdrop: false,
@@ -76,10 +75,10 @@ export class PopoverComponent {
     }
   }
 
-  toggle(event: MouseEvent) {
+  toggle() {
     if (!this.isOpen()) {
       this.isOpen.set(true);
-      this.cmptLoaderService.open(event, this.popoverTemplate, {
+      this.cmptLoaderService.open(this.popoverTemplate, {
         backdrop: false,
         closeOnBackdropClick: true,
         disableScroll: this.disableScroll(),

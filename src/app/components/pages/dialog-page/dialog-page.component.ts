@@ -20,17 +20,19 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
       <spark-button
         variant="outlined"
         slot="preview"
-        (clickEvent)="open($event, dialogRef)"
+        (clickEvent)="open(dialogRef)"
         >Open Dialog</spark-button
       >
       <ng-template #dialogRef>
-        <spark-dialog>
-          <ng-container slot="title"> Are you absolutely sure? </ng-container>
-          <ng-container slot="description">
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
-          </ng-container>
-        </spark-dialog>
+        @defer (on idle) {
+          <spark-dialog>
+            <ng-container slot="title"> Are you absolutely sure? </ng-container>
+            <ng-container slot="description">
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </ng-container>
+          </spark-dialog>
+        }
       </ng-template>
       <ng-container slot="ts">
         {{ currentTs }}
@@ -79,8 +81,8 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 export class DialogPageComponent {
   private cmptLoaderService = inject(ComponentLoaderService);
 
-  open(event: MouseEvent, dialogRef: TemplateRef<unknown>) {
-    this.cmptLoaderService.open(event, dialogRef);
+  open(dialogRef: TemplateRef<unknown>) {
+    this.cmptLoaderService.open(dialogRef);
   }
 
   currentTs = `
@@ -117,8 +119,8 @@ export class DialogPageComponent {
   export class DialogDemoComponent {
     private cmptLoaderService = inject(ComponentLoaderService);
 
-    open(event: MouseEvent, dialogRef: TemplateRef<unknown>) {
-      this.cmptLoaderService.open(event, dialogRef);
+    open(dialogRef: TemplateRef<unknown>) {
+      this.cmptLoaderService.open(dialogRef);
     }
   }`;
 
