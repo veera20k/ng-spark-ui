@@ -3,8 +3,8 @@ import { SheetComponent } from '../../../components/ui/sheet/sheet.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
-  selector: 'spark-header',
-  template: `<div
+    selector: 'spark-header',
+    template: `<div
     class="h-[var(--header-height)] border-b w-full border-gray-200 shadow-sm top-0 left-0 fixed backdrop-blur-md z-[1]"
   >
     <div class="flex items-center justify-between py-2 lg:px-12 px-6 h-full">
@@ -61,7 +61,6 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
       </div>
     </div>
   </div>`,
-  standalone: true,
-  imports: [SheetComponent, SidebarComponent],
+    imports: [SheetComponent, SidebarComponent]
 })
 export class HeaderComponent {}

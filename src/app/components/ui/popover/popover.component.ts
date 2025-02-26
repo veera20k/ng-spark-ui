@@ -11,9 +11,8 @@ import { NgStyle } from '@angular/common';
 import { Side } from '../../../core/models/common.model';
 
 @Component({
-  selector: 'spark-popover',
-  standalone: true,
-  template: `
+    selector: 'spark-popover',
+    template: `
     <div
       (mouseover)="hoverToggle() && !alwaysOpen() && toggle()"
       (mouseout)="hoverToggle() && cmptLoaderService.close()"
@@ -36,8 +35,8 @@ import { Side } from '../../../core/models/common.model';
       </div>
     </ng-template>
   `,
-  styles: [
-    `
+    styles: [
+        `
       #spark-popover-trigger {
         anchor-name: --spark-popover-anchor;
       }
@@ -46,8 +45,8 @@ import { Side } from '../../../core/models/common.model';
         position-anchor: --spark-popover-anchor;
       }
     `,
-  ],
-  imports: [NgStyle],
+    ],
+    imports: [NgStyle]
 })
 export class PopoverComponent {
   cmptLoaderService = inject(ComponentLoaderService);

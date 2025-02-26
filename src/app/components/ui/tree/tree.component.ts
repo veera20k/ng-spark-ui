@@ -4,9 +4,8 @@ import { Tree } from '../../../core/models/tree.model';
 import { BadgeComponent } from '../badge/badge.component';
 
 @Component({
-  selector: 'spark-tree',
-  standalone: true,
-  template: `
+    selector: 'spark-tree',
+    template: `
     @for (item of items; track $index) {
     <spark-tree-item [disabled]="!item.children?.length">
       <ng-container slot="label">
@@ -21,7 +20,7 @@ import { BadgeComponent } from '../badge/badge.component';
     </spark-tree-item>
     }
   `,
-  imports: [TreeItemComponent, BadgeComponent],
+    imports: [TreeItemComponent, BadgeComponent]
 })
 export class TreeComponent {
   @Input() items: Tree[] = [];

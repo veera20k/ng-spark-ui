@@ -4,10 +4,9 @@ import { HeaderComponent } from './core/layout/header/header.component';
 import { SidebarComponent } from './core/layout/sidebar/sidebar.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, HeaderComponent, SidebarComponent],
-  template: `
+    selector: 'app-root',
+    imports: [RouterOutlet, HeaderComponent, SidebarComponent],
+    template: `
     <spark-header />
     <div class="mt-[50px] lg:px-12 px-6 pt-7 pb-4 grid grid-cols-5 gap-4">
       <div class="col-span-1 hidden lg:block">
@@ -18,12 +17,12 @@ import { SidebarComponent } from './core/layout/sidebar/sidebar.component';
       </div>
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
     .sidebar-top{
        top : calc(var(--header-height) + 20px);
     }`
-  ]
+    ]
 })
 export class AppComponent {
   title = 'falsh-ui';

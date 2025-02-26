@@ -9,9 +9,8 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 import { NotesComponent } from '../../shared/notes/notes.component';
 
 @Component({
-  selector: 'spark-popover-page',
-  standalone: true,
-  template: `
+    selector: 'spark-popover-page',
+    template: `
     <spark-page-header
       title="Popover"
       description="A popover is a non-modal dialog that appears when the user interacts with an element."
@@ -69,16 +68,16 @@ import { NotesComponent } from '../../shared/notes/notes.component';
       </p>
     </spark-notes>
   `,
-  imports: [
-    PageHeaderComponent,
-    PopoverComponent,
-    ButtonComponent,
-    PreviewCodeTabsComponent,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-    NotesComponent,
-  ],
+    imports: [
+        PageHeaderComponent,
+        PopoverComponent,
+        ButtonComponent,
+        PreviewCodeTabsComponent,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+        NotesComponent,
+    ]
 })
 export class PopoverPageComponent {
   currentTs = `

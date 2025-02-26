@@ -2,8 +2,8 @@ import { Component, input } from '@angular/core';
 import { HighlighterComponent } from '../highlighter/highlighter.component';
 
 @Component({
-  selector: 'spark-installation-step',
-  template: `
+    selector: 'spark-installation-step',
+    template: `
     <div class="flex flex-col gap-3 pl-8 border-l pb-6" id="installation-step">
       <h2 id="step-title" class="before:content-[attr(step)] before:text-sm" [attr.step]="stepNumber()">
         <ng-content select="[slot=title]"></ng-content>
@@ -15,8 +15,8 @@ import { HighlighterComponent } from '../highlighter/highlighter.component';
       }
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
       #step-title:before {
         position: absolute;
         display: inline-flex;
@@ -34,12 +34,11 @@ import { HighlighterComponent } from '../highlighter/highlighter.component';
         margin-top: -4px;
       }
     `,
-  ],
-  host: {
-    class: 'relative',
-  },
-  standalone: true,
-  imports: [HighlighterComponent],
+    ],
+    host: {
+        class: 'relative',
+    },
+    imports: [HighlighterComponent]
 })
 export class InstallationStepComponent {
   code = input('');

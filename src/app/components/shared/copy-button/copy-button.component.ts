@@ -6,14 +6,13 @@ import { faClipboard } from '@fortawesome/free-regular-svg-icons/faClipboard';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 
 @Component({
-  selector: 'spark-copy-button',
-  template: `
+    selector: 'spark-copy-button',
+    template: `
     <spark-button variant="outlined">
       <fa-icon [icon]="icon"></fa-icon>
     </spark-button>
   `,
-  standalone: true,
-  imports: [TabComponent, FontAwesomeModule, ButtonComponent],
+    imports: [TabComponent, FontAwesomeModule, ButtonComponent]
 })
 export class CopyButtonComponent {
   faClipboard = faClipboard;

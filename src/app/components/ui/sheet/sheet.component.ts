@@ -4,9 +4,8 @@ import { NgClass } from '@angular/common';
 import { Side } from '../../../core/models/common.model';
 
 @Component({
-  selector: 'spark-sheet',
-  standalone: true,
-  template: `
+    selector: 'spark-sheet',
+    template: `
     <div (click)="openSheet(sheetRef)">
       <ng-content select="[slot=trigger]"> </ng-content>
     </div>
@@ -22,7 +21,7 @@ import { Side } from '../../../core/models/common.model';
       </div>
     </ng-template>
   `,
-  imports: [NgClass],
+    imports: [NgClass]
 })
 export class SheetComponent {
   side = input<Side>('left');

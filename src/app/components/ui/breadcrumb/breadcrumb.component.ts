@@ -8,9 +8,8 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'spark-breadcrumb',
-  standalone: true,
-  template: `
+    selector: 'spark-breadcrumb',
+    template: `
     @for (item of itemsToDisplay().items; track item; let isLast = $last; let i
     = $index) { @if ( i === 1 && itemsToDisplay().nested.length > 0) {
     <ng-content select="[slot=ellipsis]" />
@@ -29,11 +28,10 @@ import {
     </ng-template>
     }
   `,
-  host: {
-    class:
-      'flex flex-row text-sm text-gray-500 hover:text-gray-700 cursor-pointer',
-  },
-  imports: [NgTemplateOutlet],
+    host: {
+        class: 'flex flex-row text-sm text-gray-500 hover:text-gray-700 cursor-pointer',
+    },
+    imports: [NgTemplateOutlet]
 })
 export class BreadcrumbComponent {
   items = input.required<string[]>();

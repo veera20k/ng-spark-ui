@@ -9,9 +9,8 @@ import { InstallationStepComponent } from '../../shared/installation-step/instal
 import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 
 @Component({
-  selector: 'spark-badge-page',
-  standalone: true,
-  template: `
+    selector: 'spark-badge-page',
+    template: `
     <spark-page-header
       title="Badge"
       description="A badge is a small label used to call out new or unread information."
@@ -70,15 +69,15 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
       </ng-container>
     </spark-preview-code-tabs>
   `,
-  imports: [
-    PageHeaderComponent,
-    BadgeComponent,
-    PreviewCodeTabsComponent,
-    FontAwesomeModule,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-  ],
+    imports: [
+        PageHeaderComponent,
+        BadgeComponent,
+        PreviewCodeTabsComponent,
+        FontAwesomeModule,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+    ]
 })
 export class BadgePageComponent {
   faArrowUpRightFromSquare = faArrowUpRightFromSquare;

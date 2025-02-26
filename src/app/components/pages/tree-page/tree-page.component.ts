@@ -9,9 +9,8 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 import { NotesComponent } from "../../shared/notes/notes.component";
 
 @Component({
-  selector: 'spark-tree-page',
-  standalone: true,
-  template: `
+    selector: 'spark-tree-page',
+    template: `
     <spark-page-header title="Tree" description="The TreeComponent displays hierarchical data in a folder-like structure, where each node can represent a folder or item. It uses arrows or indicators to show expandable and collapsible sections, allowing users to navigate through nested levels of content efficiently.">
     </spark-page-header>
     <spark-preview-code-tabs>
@@ -42,15 +41,15 @@ import { NotesComponent } from "../../shared/notes/notes.component";
       <p>Current lazy loading is not supported. working on it.</p>
     </spark-notes>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    TreeComponent,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-    NotesComponent
-],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        TreeComponent,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+        NotesComponent
+    ]
 })
 export class TreePageComponent {
   items: Tree[] = [

@@ -10,9 +10,8 @@ import { faMicrophone } from '@fortawesome/free-solid-svg-icons/faMicrophone';
 import { InputBaseComponent } from '../../ui/base/input-base/input-base.component';
 
 @Component({
-  selector: 'spark-input-page',
-  standalone: true,
-  template: `
+    selector: 'spark-input-page',
+    template: `
     <spark-page-header
       title="Input"
       description="An input is a component that allows the user to enter and edit text."
@@ -79,15 +78,15 @@ import { InputBaseComponent } from '../../ui/base/input-base/input-base.componen
       </ng-container>
     </spark-preview-code-tabs>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-    FontAwesomeModule,
-    InputBaseComponent,
-  ],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+        FontAwesomeModule,
+        InputBaseComponent,
+    ]
 })
 export class InputPageComponent {
   faSearch = faSearch;

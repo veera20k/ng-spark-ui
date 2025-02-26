@@ -5,9 +5,8 @@ import { faArrowUpRightFromSquare, faChevronRight } from '@fortawesome/free-soli
 import { BreadcrumbComponent } from '../../ui/breadcrumb/breadcrumb.component';
 
 @Component({
-  selector: 'spark-page-header',
-  standalone: true,
-  template: `
+    selector: 'spark-page-header',
+    template: `
     <spark-breadcrumb [items]="['components', title()]" >
       <ng-template #seperator>
         <fa-icon [icon]="faChevronRight" class="text-xs"></fa-icon>
@@ -17,7 +16,7 @@ import { BreadcrumbComponent } from '../../ui/breadcrumb/breadcrumb.component';
     <p class="mb-3 text-gray-600">{{ description() }}</p>
     <br />
   `,
-  imports: [BadgeComponent, FontAwesomeModule, BreadcrumbComponent],
+    imports: [BadgeComponent, FontAwesomeModule, BreadcrumbComponent]
 })
 export class PageHeaderComponent {
   title = input('');

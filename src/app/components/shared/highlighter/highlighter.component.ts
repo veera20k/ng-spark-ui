@@ -4,16 +4,15 @@ import { Component, input } from '@angular/core';
 import { CopyButtonComponent } from "../copy-button/copy-button.component";
 
 @Component({
-  selector: 'spark-highlighter',
-  template: `
+    selector: 'spark-highlighter',
+    template: `
     <pre class="!p-0 !m-0 rounded-lg bg-black relative h-full">
         <code [ngClass]="'language-'+ language()"  sparkHighlight>
             <ng-content />
         </code>
     </pre>
   `,
-  standalone: true,
-  imports: [NgClass, PrismHighlightDirective, CopyButtonComponent],
+    imports: [NgClass, PrismHighlightDirective, CopyButtonComponent]
 })
 export class HighlighterComponent {
   language = input.required<string>();

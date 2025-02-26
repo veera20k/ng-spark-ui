@@ -8,9 +8,8 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 import { BadgeComponent } from "../../ui/badge/badge.component";
 
 @Component({
-  selector: 'spark-button-page',
-  standalone: true,
-  template: `
+    selector: 'spark-button-page',
+    template: `
     <spark-page-header
       title="Button"
       description="A button is a graphical control element that is used to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation."
@@ -80,15 +79,15 @@ import { BadgeComponent } from "../../ui/badge/badge.component";
       </ng-container>
     </spark-preview-code-tabs>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    ButtonComponent,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-    BadgeComponent
-],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        ButtonComponent,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+        BadgeComponent
+    ]
 })
 export class ButtonPageComponent {
 

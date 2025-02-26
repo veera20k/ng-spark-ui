@@ -9,9 +9,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown';
 
 @Component({
-  selector: 'spark-accordion-item',
-  standalone: true,
-  template: `
+    selector: 'spark-accordion-item',
+    template: `
     <div class="border-b w-full rounded-md">
       <div
         class="flex justify-between px-4 py-3 cursor-pointer"
@@ -33,10 +32,10 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons/faChevronDown';
       </div>
     </div>
   `,
-  host: {
-    class: 'contents',
-  },
-  imports: [FontAwesomeModule, NgClass],
+    host: {
+        class: 'contents',
+    },
+    imports: [FontAwesomeModule, NgClass]
 })
 export class AccordionItemComponent {
   isOpen = signal(false);

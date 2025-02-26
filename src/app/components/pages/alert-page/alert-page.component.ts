@@ -9,9 +9,8 @@ import { InstallationStepComponent } from '../../shared/installation-step/instal
 import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 
 @Component({
-  selector: 'spark-alert-page',
-  standalone: true,
-  template: `
+    selector: 'spark-alert-page',
+    template: `
     <spark-page-header
       title="Alert"
       description="An alert is a small window that displays a brief, important message in a way that attracts the user's attention without interrupting the user's task."
@@ -39,15 +38,15 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
       </spark-installation-step>
     </spark-installation-wrap>
   `,
-  imports: [
-    PageHeaderComponent,
-    AlertComponent,
-    PreviewCodeTabsComponent,
-    FontAwesomeModule,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-  ],
+    imports: [
+        PageHeaderComponent,
+        AlertComponent,
+        PreviewCodeTabsComponent,
+        FontAwesomeModule,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+    ]
 })
 export class AlertPageComponent {
   faTerminal = faTerminal;

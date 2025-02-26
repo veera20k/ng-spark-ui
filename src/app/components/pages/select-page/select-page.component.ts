@@ -7,9 +7,8 @@ import { InstallationStepComponent } from "../../shared/installation-step/instal
 import { SparkLinkComponent } from "../../shared/link/spark-link.component";
 
 @Component({
-  selector: 'spark-select-page',
-  standalone: true,
-  template: `
+    selector: 'spark-select-page',
+    template: `
     <spark-page-header
       title="Input"
       description="An input is a component that allows the user to enter and edit text."
@@ -60,7 +59,7 @@ import { SparkLinkComponent } from "../../shared/link/spark-link.component";
       </spark-installation-step>
     </spark-installation-wrap>
   `,
-  imports: [PageHeaderComponent, PreviewCodeTabsComponent, SelectComponent, InstallationWrapComponent, InstallationStepComponent, SparkLinkComponent],
+    imports: [PageHeaderComponent, PreviewCodeTabsComponent, SelectComponent, InstallationWrapComponent, InstallationStepComponent, SparkLinkComponent]
 })
 export class SelectPageComponent {
 

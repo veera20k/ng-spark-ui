@@ -3,9 +3,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
 
 @Component({
-  selector: 'spark-notes',
-  standalone: true,
-  template: `
+    selector: 'spark-notes',
+    template: `
     <br />
     <h2 class="text-xl font-bold">Notes</h2>
     <br>
@@ -15,7 +14,7 @@ import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
     </div>
     <br />
   `,
-  imports: [FontAwesomeModule],
+    imports: [FontAwesomeModule]
 })
 export class NotesComponent {
   faCircleInfo = faCircleInfo;

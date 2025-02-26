@@ -3,9 +3,8 @@ import { Component, input, output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
-  selector: 'spark-checkbox',
-  standalone: true,
-  template: `
+    selector: 'spark-checkbox',
+    template: `
     <label
       [for]="htmlFor()"
       class="relative flex items-center rounded-full cursor-pointer"
@@ -33,10 +32,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       <ng-content select="[slot=label]"></ng-content>
     </label>
   `,
-  host: {
-    class: 'inline-flex items-center',
-  },
-  imports: [NgClass],
+    host: {
+        class: 'inline-flex items-center',
+    },
+    imports: [NgClass]
 })
 export class CheckboxComponent {
   htmlFor = input('');

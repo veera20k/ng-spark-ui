@@ -7,9 +7,8 @@ import { InstallationWrapComponent } from '../../shared/instllation-wrap/install
 import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 
 @Component({
-  selector: 'spark-checkbox-page',
-  standalone: true,
-  template: `
+    selector: 'spark-checkbox-page',
+    template: `
     <spark-page-header
       title="Checkbox"
       description="A checkbox is a graphical control element that allows the user to select one or more items from a list of options."
@@ -33,14 +32,14 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
       </spark-installation-step>
     </spark-installation-wrap>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    CheckboxComponent,
-    InstallationStepComponent,
-    InstallationWrapComponent,
-    SparkLinkComponent,
-  ],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        CheckboxComponent,
+        InstallationStepComponent,
+        InstallationWrapComponent,
+        SparkLinkComponent,
+    ]
 })
 export class CheckboxPageComponent {
   currentTs = `

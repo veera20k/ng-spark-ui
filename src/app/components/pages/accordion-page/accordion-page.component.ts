@@ -9,9 +9,8 @@ import { InstallationWrapComponent } from '../../shared/instllation-wrap/install
 import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 
 @Component({
-  selector: 'spark-accordion-page',
-  standalone: true,
-  template: `
+    selector: 'spark-accordion-page',
+    template: `
     <spark-page-header
       title="Accordion"
       description="The Accordion component organizes content into expandable sections, allowing users to toggle visibility by clicking on headers. It supports multiple or single item expansion"
@@ -99,16 +98,16 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
       </ng-container>
     </spark-preview-code-tabs>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    AccordionItemComponent,
-    AccordionDirective,
-    InstallationStepComponent,
-    BadgeComponent,
-    InstallationWrapComponent,
-    SparkLinkComponent,
-  ],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        AccordionItemComponent,
+        AccordionDirective,
+        InstallationStepComponent,
+        BadgeComponent,
+        InstallationWrapComponent,
+        SparkLinkComponent,
+    ]
 })
 export class AccordionPageComponent {
   getAccCode = (mode: string) => {

@@ -11,9 +11,8 @@ import { SparkLinkComponent } from "../../shared/link/spark-link.component";
 import { InstallationWrapComponent } from "../../shared/instllation-wrap/installation-wrap.component";
 
 @Component({
-  selector: 'spark-toaster-page',
-  standalone: true,
-  template: `
+    selector: 'spark-toaster-page',
+    template: `
     <spark-page-header
       title="Toaster"
       description="A toaster is a small pop-up window that displays a brief message in response to a user action."
@@ -72,15 +71,15 @@ import { InstallationWrapComponent } from "../../shared/instllation-wrap/install
       </spark-installation-step>
     </spark-installation-wrap>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    ButtonComponent,
-    ToastComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-    InstallationWrapComponent
-],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        ButtonComponent,
+        ToastComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+        InstallationWrapComponent
+    ]
 })
 export class ToasterPageComponent {
   private toasterService = inject(ToasterService);

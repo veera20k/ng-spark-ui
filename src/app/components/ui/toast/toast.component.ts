@@ -12,9 +12,8 @@ import { ToasterOptions } from '../../../core/models/dialog-options.model';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
-  selector: 'spark-toast',
-  standalone: true,
-  template: `
+    selector: 'spark-toast',
+    template: `
     <div
       class="shadow fixed z-[1] p-3 flex flex-row gap-2 items-center bg-white border max-w-[350px] rounded-xl group"
       [ngClass]="toastClass()"
@@ -36,7 +35,7 @@ import { ButtonComponent } from '../button/button.component';
       }
     </div>
   `,
-  imports: [NgStyle, NgClass, ButtonComponent],
+    imports: [NgStyle, NgClass, ButtonComponent]
 })
 export class ToastComponent {
   elementRef = inject(ElementRef);

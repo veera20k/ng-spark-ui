@@ -4,9 +4,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BadgeComponent } from '../../badge/badge.component';
 
 @Component({
-  selector: 'spark-tree-item',
-  standalone: true,
-  template: `
+    selector: 'spark-tree-item',
+    template: `
     <div class="flex pb-2">
       <ng-content select="[slot=label]" />
       <span
@@ -27,7 +26,7 @@ import { BadgeComponent } from '../../badge/badge.component';
       </section>
     </div>
   `,
-  imports: [NgClass, BadgeComponent],
+    imports: [NgClass, BadgeComponent]
 })
 export class TreeItemComponent {
   setOpen = input(false);

@@ -8,9 +8,8 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 import { NotesComponent } from "../../shared/notes/notes.component";
 
 @Component({
-  selector: 'spark-slider-page',
-  standalone: true,
-  template: `
+    selector: 'spark-slider-page',
+    template: `
     <spark-page-header
       title="Slider"
       description="A slider is a control element that allows users to select a value from a range of values."
@@ -42,15 +41,15 @@ import { NotesComponent } from "../../shared/notes/notes.component";
       <p>Currently, the slider component does not support vertical sliders. working on it.</p>
     </spark-notes>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    SliderComponent,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-    NotesComponent
-],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        SliderComponent,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+        NotesComponent
+    ]
 })
 export class SliderPageComponent {
   currentTs = `

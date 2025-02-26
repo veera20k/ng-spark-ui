@@ -12,9 +12,8 @@ import {
 import { Side } from '../../../core/models/common.model';
 
 @Component({
-  selector: 'spark-tooltip',
-  standalone: true,
-  template: `
+    selector: 'spark-tooltip',
+    template: `
     <ng-content select="[slot=trigger]"></ng-content>
     <div
       class="bg-primary px-2 py-1.5 leading-3 rounded-lg text-white min-w-[24px]"
@@ -42,18 +41,18 @@ import { Side } from '../../../core/models/common.model';
       <ng-content select="[slot=content]"></ng-content>
     </div>
   `,
-  styles: [
-    `
+    styles: [
+        `
       #spark-tooltip-content {
         position: absolute;
         position-anchor: --spark-tooltip-anchor;
       }
     `,
-  ],
-  imports: [NgStyle, NgClass],
-  host: {
-    class: 'contents',
-  },
+    ],
+    imports: [NgStyle, NgClass],
+    host: {
+        class: 'contents',
+    }
 })
 export class TooltipComponent {
   side = input<Side>('top');

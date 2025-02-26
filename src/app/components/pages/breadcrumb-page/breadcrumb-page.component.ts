@@ -11,9 +11,8 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 import { NotesComponent } from "../../shared/notes/notes.component";
 
 @Component({
-  selector: 'spark-breadcrumb-page',
-  standalone: true,
-  template: `
+    selector: 'spark-breadcrumb-page',
+    template: `
     <spark-page-header
       title="Badge"
       description="A badge is a small label used to call out new or unread information."
@@ -47,16 +46,16 @@ import { NotesComponent } from "../../shared/notes/notes.component";
       <p>The Seperator and Ellipsis slots are Dynamic. If yo want to hardcode it please replace with your icons</p>
     </spark-notes>
   `,
-  imports: [
-    FontAwesomeModule,
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    BreadcrumbComponent,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-    NotesComponent
-],
+    imports: [
+        FontAwesomeModule,
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        BreadcrumbComponent,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+        NotesComponent
+    ]
 })
 export class BreadcrumbPageComponent {
   faChevronRight = faChevronRight;

@@ -7,9 +7,8 @@ import { InstallationStepComponent } from '../../shared/installation-step/instal
 import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 
 @Component({
-  selector: 'spark-radio-page',
-  standalone: true,
-  template: `
+    selector: 'spark-radio-page',
+    template: `
     <spark-page-header
       title="Radio"
       description="A radio is a graphical control element that allows the user to select one option from a list of options."
@@ -35,14 +34,14 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
       </spark-installation-step>
     </spark-installation-wrap>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    RadioComponent,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-  ],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        RadioComponent,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+    ]
 })
 export class RadioPageComponent {
   currentTs = `

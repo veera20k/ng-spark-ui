@@ -7,9 +7,8 @@ import { InstallationStepComponent } from '../../shared/installation-step/instal
 import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 
 @Component({
-  selector: 'spark-switch-page',
-  standalone: true,
-  template: `
+    selector: 'spark-switch-page',
+    template: `
     <spark-page-header
       title="Switch"
       description="A switch is a toggle that allows the user to turn an option on or off."
@@ -31,14 +30,14 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
       </spark-installation-step>
     </spark-installation-wrap>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    SwitchComponent,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-  ],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        SwitchComponent,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+    ]
 })
 export class SwitchPageComponent {
   currentTs = `

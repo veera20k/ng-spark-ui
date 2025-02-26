@@ -2,9 +2,8 @@ import { NgClass, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
 import { Component, input, output, signal } from '@angular/core';
 
 @Component({
-  selector: 'spark-tab',
-  standalone: true,
-  template: `
+    selector: 'spark-tab',
+    template: `
   <div class="flex gap-4 border-b">
     <ng-template #tabItem let-tab let-disabled="disabled" let-index="index">
       <span
@@ -27,7 +26,7 @@ import { Component, input, output, signal } from '@angular/core';
   </div>
     <ng-content></ng-content>
   `,
-  imports: [NgClass, TitleCasePipe, NgTemplateOutlet],
+    imports: [NgClass, TitleCasePipe, NgTemplateOutlet]
 })
 export class TabComponent {
   items = input<string[]>([]);

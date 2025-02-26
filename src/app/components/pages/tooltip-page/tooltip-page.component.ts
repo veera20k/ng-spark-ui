@@ -9,9 +9,8 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 import { NotesComponent } from "../../shared/notes/notes.component";
 
 @Component({
-  selector: 'spark-tooltip-page',
-  standalone: true,
-  template: `
+    selector: 'spark-tooltip-page',
+    template: `
     <spark-page-header
       title="Sheet"
       description="A sheet is a non-modal dialog that appears when the user interacts with an element."
@@ -41,16 +40,16 @@ import { NotesComponent } from "../../shared/notes/notes.component";
       <p>This componet uses anchor element to position itself. It is not supported in IE11. please check the browser support.</p>
     </spark-notes>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    ButtonComponent,
-    TooltipComponent,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-    NotesComponent
-],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        ButtonComponent,
+        TooltipComponent,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+        NotesComponent
+    ]
 })
 export class TooltipPageComponent {
   currentTs = `

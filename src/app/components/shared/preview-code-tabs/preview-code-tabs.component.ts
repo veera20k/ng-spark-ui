@@ -13,8 +13,8 @@ import { PrismHighlightDirective } from '../../../core/directives/higlighter.dir
 import { HighlighterComponent } from '../highlighter/highlighter.component';
 
 @Component({
-  selector: 'spark-preview-code-tabs',
-  template: `
+    selector: 'spark-preview-code-tabs',
+    template: `
     <spark-tab
       [smartItems]="[{ title: 'preview' }, { title: 'ts' }]"
       (onTabeSwitch)="onTabeSwitch($event)"
@@ -44,15 +44,14 @@ import { HighlighterComponent } from '../highlighter/highlighter.component';
       </div>
     </spark-tab>
   `,
-  standalone: true,
-  imports: [
-    TabComponent,
-    ButtonComponent,
-    CopyButtonComponent,
-    NgClass,
-    PrismHighlightDirective,
-    HighlighterComponent,
-  ],
+    imports: [
+        TabComponent,
+        ButtonComponent,
+        CopyButtonComponent,
+        NgClass,
+        PrismHighlightDirective,
+        HighlighterComponent,
+    ]
 })
 export class PreviewCodeTabsComponent {
   @ViewChild('codeRef', { static: true })

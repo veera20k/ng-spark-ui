@@ -8,9 +8,8 @@ import { InstallationStepComponent } from '../../shared/installation-step/instal
 import { SparkLinkComponent } from "../../shared/link/spark-link.component";
 
 @Component({
-  selector: 'spark-sheet-page',
-  standalone: true,
-  template: `
+    selector: 'spark-sheet-page',
+    template: `
     <spark-page-header
       title="Sheet"
       description="A sheet is a non-modal dialog that appears when the user interacts with an element."
@@ -90,15 +89,15 @@ import { SparkLinkComponent } from "../../shared/link/spark-link.component";
       </spark-installation-step>
     </spark-installation-wrap>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    SheetComponent,
-    ButtonComponent,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent
-],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        SheetComponent,
+        ButtonComponent,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent
+    ]
 })
 export class SheetPageComponent {
   currentTs = `

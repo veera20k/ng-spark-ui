@@ -2,8 +2,8 @@ import { Component, input } from "@angular/core";
 import { InstallationStepComponent } from "../installation-step/installation-step.component";
 
 @Component({
-  selector: "spark-installation-wrap",
-  template: `
+    selector: "spark-installation-wrap",
+    template: `
     <br />
      <h2 class="text-xl font-bold">Installation & Usage</h2>
     <br />
@@ -14,8 +14,7 @@ import { InstallationStepComponent } from "../installation-step/installation-ste
     <ng-content/>
     </div>
   `,
-  standalone: true,
-  imports: [InstallationStepComponent],
+    imports: [InstallationStepComponent]
 })
 export class InstallationWrapComponent {
 }

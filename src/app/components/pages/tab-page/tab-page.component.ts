@@ -7,8 +7,8 @@ import { InstallationWrapComponent } from '../../shared/instllation-wrap/install
 import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 
 @Component({
-  selector: 'spark-tab-page',
-  template: `
+    selector: 'spark-tab-page',
+    template: `
     <spark-page-header
       title="Tab"
       description="A tab is a navigation element that allows the user to navigate between different views or screens."
@@ -42,15 +42,14 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
       </spark-installation-step>
     </spark-installation-wrap>
   `,
-  standalone: true,
-  imports: [
-    PreviewCodeTabsComponent,
-    PageHeaderComponent,
-    TabComponent,
-    InstallationStepComponent,
-    InstallationWrapComponent,
-    SparkLinkComponent,
-  ],
+    imports: [
+        PreviewCodeTabsComponent,
+        PageHeaderComponent,
+        TabComponent,
+        InstallationStepComponent,
+        InstallationWrapComponent,
+        SparkLinkComponent,
+    ]
 })
 export class TabPageComponent {
   activeTab = signal('one');

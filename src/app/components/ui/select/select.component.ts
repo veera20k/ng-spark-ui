@@ -10,8 +10,8 @@ type SelectOutput<T extends 'single' | 'multiple'> = T extends 'single'
   : string[];
 
 @Component({
-  selector: 'spark-select',
-  template: `
+    selector: 'spark-select',
+    template: `
     <spark-popover [disableScroll]="true" side="bottom" [anchorWidth]="true">
       <spark-button variant="outlined" slot="trigger">
         <div class="flex justify-between p-1">
@@ -44,8 +44,7 @@ type SelectOutput<T extends 'single' | 'multiple'> = T extends 'single'
       </div>
     </spark-popover>
   `,
-  standalone: true,
-  imports: [PopoverComponent, ButtonComponent, NgClass, CheckboxComponent],
+    imports: [PopoverComponent, ButtonComponent, NgClass, CheckboxComponent]
 })
 export class SelectComponent<T extends 'single' | 'multiple'> {
   type = input<T>('single' as T);

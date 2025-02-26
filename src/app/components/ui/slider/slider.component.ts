@@ -13,9 +13,8 @@ import { TooltipComponent } from '../tooltip/tooltip.component';
 import { Side } from '../../../core/models/common.model';
 
 @Component({
-  selector: 'spark-slider',
-  standalone: true,
-  template: `
+    selector: 'spark-slider',
+    template: `
     <div class="relative w-full h-2 bg-gray-300 rounded-full" #slider>
       <div
         class="absolute h-2 bg-primary rounded-full"
@@ -38,7 +37,7 @@ import { Side } from '../../../core/models/common.model';
       </spark-tooltip>
     </div>
   `,
-  imports: [NgStyle, NgClass, TooltipComponent, DecimalPipe],
+    imports: [NgStyle, NgClass, TooltipComponent, DecimalPipe]
 })
 export class SliderComponent {
   value = model.required<number>();

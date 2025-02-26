@@ -9,9 +9,8 @@ import { InstallationStepComponent } from '../../shared/installation-step/instal
 import { SparkLinkComponent } from '../../shared/link/spark-link.component';
 
 @Component({
-  selector: 'spark-dialog-page',
-  standalone: true,
-  template: `
+    selector: 'spark-dialog-page',
+    template: `
     <spark-page-header
       title="Dialog"
       description="A modal dialog that interrupts the user with important content and expects a response."
@@ -68,15 +67,15 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
       </spark-installation-step>
     </spark-installation-wrap>
   `,
-  imports: [
-    PageHeaderComponent,
-    PreviewCodeTabsComponent,
-    DialogComponent,
-    ButtonComponent,
-    InstallationWrapComponent,
-    InstallationStepComponent,
-    SparkLinkComponent,
-  ],
+    imports: [
+        PageHeaderComponent,
+        PreviewCodeTabsComponent,
+        DialogComponent,
+        ButtonComponent,
+        InstallationWrapComponent,
+        InstallationStepComponent,
+        SparkLinkComponent,
+    ]
 })
 export class DialogPageComponent {
   private cmptLoaderService = inject(ComponentLoaderService);
