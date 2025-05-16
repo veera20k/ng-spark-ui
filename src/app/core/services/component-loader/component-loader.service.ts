@@ -25,6 +25,15 @@ export class ComponentLoaderService {
     template: TemplateRef<unknown>,
     options?: DialogOptions
   ) {
+
+// // Extract the native element of the IntroComponent
+// const introNativeElement = (introCompRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
+
+// // Create DialogComponent instance with projectable content
+// const dialogCompRef = createComponent(DialogComponent, {
+//   environmentInjector: this.envInjector,
+//   projectableNodes: [[introNativeElement]], // Pass IntroComponent content here
+// });
     const content = template.createEmbeddedView(null);
     this.appRef.attachView(content);  
     const ref = createComponent(ModalBaseComponent, {

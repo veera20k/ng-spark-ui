@@ -10,7 +10,7 @@ import { CopyButtonComponent } from "../copy-button/copy-button.component";
         <code [ngClass]="'language-'+ language()"  sparkHighlight>
             <ng-content />
         </code>
-    </pre>
+    </pre>re
   `,
     imports: [NgClass, PrismHighlightDirective, CopyButtonComponent]
 })
