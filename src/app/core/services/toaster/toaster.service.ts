@@ -4,8 +4,9 @@ import {
   EnvironmentInjector,
   inject,
   Injectable,
+  DOCUMENT
 } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+
 import { ToastComponent } from '../../../components/ui/toast/toast.component';
 import { ToasterOptions } from '../../models/dialog-options.model';
 

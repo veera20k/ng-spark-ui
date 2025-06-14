@@ -6,7 +6,7 @@ import { Component, input } from "@angular/core";
   template: `
       <input
         type="radio"
-        class="h-4 w-4 rounded-full border border-primary accent-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+        class="h-4 w-4 rounded-full border border-primary accent-primary text-primary ring-offset-background focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
         [checked]="checked()"
         [disabled]="disabled()"
         [value]="value()"

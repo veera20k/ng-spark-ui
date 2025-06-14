@@ -1,7 +1,5 @@
 import { NgClass } from '@angular/common';
 import { Component, input, output, signal } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { BadgeComponent } from '../../badge/badge.component';
 
 @Component({
     selector: 'spark-tree-item',
@@ -26,7 +24,7 @@ import { BadgeComponent } from '../../badge/badge.component';
       </section>
     </div>
   `,
-    imports: [NgClass, BadgeComponent]
+    imports: [NgClass]
 })
 export class TreeItemComponent {
   setOpen = input(false);

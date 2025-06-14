@@ -25,5 +25,5 @@ import { SidebarComponent } from './core/layout/sidebar/sidebar.component';
     ]
 })
 export class AppComponent {
-  title = 'falsh-ui';
+  title = 'spark-ui';
 }

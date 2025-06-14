@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { TreeItemComponent } from './tree-item.component.ts/tree-item.component';
 import { Tree } from '../../../core/models/tree.model';
-import { BadgeComponent } from '../badge/badge.component';
 
 @Component({
     selector: 'spark-tree',
@@ -20,7 +19,7 @@ import { BadgeComponent } from '../badge/badge.component';
     </spark-tree-item>
     }
   `,
-    imports: [TreeItemComponent, BadgeComponent]
+    imports: [TreeItemComponent]
 })
 export class TreeComponent {
   @Input() items: Tree[] = [];

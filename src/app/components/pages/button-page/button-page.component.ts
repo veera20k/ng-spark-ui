@@ -5,7 +5,6 @@ import { ButtonComponent } from '../../ui/button/button.component';
 import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
 import { SparkLinkComponent } from '../../shared/link/spark-link.component';
-import { BadgeComponent } from "../../ui/badge/badge.component";
 
 @Component({
     selector: 'spark-button-page',
@@ -86,7 +85,6 @@ import { BadgeComponent } from "../../ui/badge/badge.component";
         InstallationWrapComponent,
         InstallationStepComponent,
         SparkLinkComponent,
-        BadgeComponent
     ]
 })
 export class ButtonPageComponent {

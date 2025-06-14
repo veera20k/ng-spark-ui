@@ -1,8 +1,6 @@
 import { Component, inject, TemplateRef } from '@angular/core';
-import { ComponentLoaderService } from '../../../core/services/component-loader/component-loader.service';
 import { PreviewCodeTabsComponent } from '../../shared/preview-code-tabs/preview-code-tabs.component';
 import { ButtonComponent } from '../../ui/button/button.component';
-import { ToastComponent } from '../../ui/toast/toast.component';
 import { PageHeaderComponent } from '../page-header/page-header.component';
 import { ToasterService } from '../../../core/services/toaster/toaster.service';
 import { ToasterPosition } from '../../../core/models/common.model';
@@ -75,7 +73,6 @@ import { InstallationWrapComponent } from "../../shared/instllation-wrap/install
         PageHeaderComponent,
         PreviewCodeTabsComponent,
         ButtonComponent,
-        ToastComponent,
         InstallationStepComponent,
         SparkLinkComponent,
         InstallationWrapComponent
@@ -178,7 +175,7 @@ export class ToasterPageComponent {
     standalone: true,
     template: \`
       <div
-        class="shadow fixed p-3 flex flex-row gap-2 items-center bg-white border max-w-[350px] rounded-xl group"
+        class="shadow-sm fixed p-3 flex flex-row gap-2 items-center bg-white border max-w-[350px] rounded-xl group"
         [ngClass]="toastClass()"
       >
         <div class="flex-1 flex flex-col gap-2">

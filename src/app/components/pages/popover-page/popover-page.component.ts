@@ -20,7 +20,7 @@ import { NotesComponent } from '../../shared/notes/notes.component';
         <spark-button slot="trigger">Click me</spark-button>
         <div
           slot="content"
-          class="bg-white p-4 rounded-lg shadow w-[300px] m-2"
+          class="bg-white p-4 rounded-lg shadow-sm w-[300px] m-2"
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
           mollitia repudiandae dolore debitis. Sed laudantium necessitatibus

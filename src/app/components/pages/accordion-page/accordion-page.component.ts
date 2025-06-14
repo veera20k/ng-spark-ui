@@ -3,7 +3,6 @@ import { PageHeaderComponent } from '../page-header/page-header.component';
 import { PreviewCodeTabsComponent } from '../../shared/preview-code-tabs/preview-code-tabs.component';
 import { AccordionItemComponent } from '../../ui/accoridon-item/accordion-item.component';
 import { AccordionDirective } from '../../../core/directives/accordion.directive';
-import { BadgeComponent } from '../../ui/badge/badge.component';
 import { InstallationStepComponent } from '../../shared/installation-step/installation-step.component';
 import { InstallationWrapComponent } from '../../shared/instllation-wrap/installation-wrap.component';
 import { SparkLinkComponent } from '../../shared/link/spark-link.component';
@@ -104,7 +103,6 @@ import { SparkLinkComponent } from '../../shared/link/spark-link.component';
         AccordionItemComponent,
         AccordionDirective,
         InstallationStepComponent,
-        BadgeComponent,
         InstallationWrapComponent,
         SparkLinkComponent,
     ]

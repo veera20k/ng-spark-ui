@@ -1,4 +1,4 @@
-import { DOCUMENT } from '@angular/common';
+
 import {
   ApplicationRef,
   ComponentRef,
@@ -6,6 +6,7 @@ import {
   inject,
   Injectable,
   TemplateRef,
+  DOCUMENT
 } from '@angular/core';
 import { DialogOptions } from '../../models/dialog-options.model';
 import { ModalBaseComponent } from '../../../components/ui/base/modal-base/modal-base.component';

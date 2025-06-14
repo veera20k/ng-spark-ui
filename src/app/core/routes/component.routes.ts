@@ -2,6 +2,11 @@ import { Routes } from '@angular/router';
 
 export const componentRoutes: Routes = [
   {
+    path: '',
+    redirectTo: 'accodrion',
+    pathMatch: 'full'
+  },
+  {
     path: 'accordion',
     loadComponent: () =>
       import(

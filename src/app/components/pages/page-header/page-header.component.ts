@@ -1,5 +1,4 @@
 import { Component, input } from '@angular/core';
-import { BadgeComponent } from '../../ui/badge/badge.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowUpRightFromSquare, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { BreadcrumbComponent } from '../../ui/breadcrumb/breadcrumb.component';
@@ -16,7 +15,7 @@ import { BreadcrumbComponent } from '../../ui/breadcrumb/breadcrumb.component';
     <p class="mb-3 text-gray-600">{{ description() }}</p>
     <br />
   `,
-    imports: [BadgeComponent, FontAwesomeModule, BreadcrumbComponent]
+    imports: [FontAwesomeModule, BreadcrumbComponent]
 })
 export class PageHeaderComponent {
   title = input('');

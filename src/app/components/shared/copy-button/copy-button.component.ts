@@ -1,7 +1,6 @@
 import { Component, HostListener, output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ButtonComponent } from '../../ui/button/button.component';
-import { TabComponent } from '../../ui/tab/tab.component';
 import { faClipboard } from '@fortawesome/free-regular-svg-icons/faClipboard';
 import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
 
@@ -12,7 +11,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck';
       <fa-icon [icon]="icon"></fa-icon>
     </spark-button>
   `,
-    imports: [TabComponent, FontAwesomeModule, ButtonComponent]
+    imports: [FontAwesomeModule, ButtonComponent]
 })
 export class CopyButtonComponent {
   faClipboard = faClipboard;

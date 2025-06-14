@@ -15,7 +15,7 @@ import { ButtonComponent } from '../button/button.component';
     selector: 'spark-toast',
     template: `
     <div
-      class="shadow fixed z-[1] p-3 flex flex-row gap-2 items-center bg-white border max-w-[350px] rounded-xl group"
+      class="shadow-sm fixed z-1 p-3 flex flex-row gap-2 items-center bg-white border max-w-[350px] rounded-xl group"
       [ngClass]="toastClass()"
     >
       <div class="flex-1 flex flex-col gap-2">
@@ -35,7 +35,7 @@ import { ButtonComponent } from '../button/button.component';
       }
     </div>
   `,
-    imports: [NgStyle, NgClass, ButtonComponent]
+    imports: [NgClass, ButtonComponent]
 })
 export class ToastComponent {
   elementRef = inject(ElementRef);

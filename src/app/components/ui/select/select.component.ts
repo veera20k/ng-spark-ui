@@ -21,7 +21,7 @@ type SelectOutput<T extends 'single' | 'multiple'> = T extends 'single'
       </spark-button>
       <div
         slot="content"
-        class="p-2 rounded-md bg-white shadow-sm w-full border mt-1"
+        class="p-2 rounded-md bg-white shadow-xs w-full border mt-1"
       >
         <ul>
           @for (item of items(); track item.value) {
@@ -44,7 +44,7 @@ type SelectOutput<T extends 'single' | 'multiple'> = T extends 'single'
       </div>
     </spark-popover>
   `,
-    imports: [PopoverComponent, ButtonComponent, NgClass, CheckboxComponent]
+    imports: [PopoverComponent, ButtonComponent, CheckboxComponent]
 })
 export class SelectComponent<T extends 'single' | 'multiple'> {
   type = input<T>('single' as T);

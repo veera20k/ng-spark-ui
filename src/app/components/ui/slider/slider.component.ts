@@ -37,7 +37,7 @@ import { Side } from '../../../core/models/common.model';
       </spark-tooltip>
     </div>
   `,
-    imports: [NgStyle, NgClass, TooltipComponent, DecimalPipe]
+    imports: [NgStyle, TooltipComponent, DecimalPipe]
 })
 export class SliderComponent {
   value = model.required<number>();

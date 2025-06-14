@@ -3,13 +3,10 @@ import {
   ElementRef,
   signal,
   ViewChild,
-  viewChild,
 } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { TabComponent } from '../../ui/tab/tab.component';
-import { ButtonComponent } from '../../ui/button/button.component';
 import { CopyButtonComponent } from '../copy-button/copy-button.component';
-import { PrismHighlightDirective } from '../../../core/directives/higlighter.directive';
 import { HighlighterComponent } from '../highlighter/highlighter.component';
 
 @Component({
@@ -20,7 +17,7 @@ import { HighlighterComponent } from '../highlighter/highlighter.component';
       (onTabeSwitch)="onTabeSwitch($event)"
     >
       <div class="border p-3 mt-7 relative">
-        <header class="flex justify-end absolute right-9 top-5 z-[1]">
+        <header class="flex justify-end absolute right-9 top-5 z-1">
           <spark-copy-button (copyEvent)="onCopy()"></spark-copy-button>
         </header>
         <section
@@ -46,10 +43,8 @@ import { HighlighterComponent } from '../highlighter/highlighter.component';
   `,
     imports: [
         TabComponent,
-        ButtonComponent,
         CopyButtonComponent,
         NgClass,
-        PrismHighlightDirective,
         HighlighterComponent,
     ]
 })

@@ -6,7 +6,7 @@ import { NgClass } from '@angular/common';
     selector: 'spark-badge',
     template: `
     <div
-      class="inline-flex items-center rounded-md border px-2 py-0.5 text-xs transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 gap-1 cursor-pointer"
+      class="inline-flex items-center rounded-md border px-2 py-0.5 text-xs transition-colors focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 gap-1 cursor-pointer"
       [ngClass]="badgeVairentClass()"
     >
       <ng-content></ng-content>

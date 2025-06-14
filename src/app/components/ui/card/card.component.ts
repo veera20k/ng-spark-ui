@@ -12,7 +12,7 @@ import { Component } from '@angular/core';
       <ng-content select="[slot=footer]"/>
     </footer>`,
   host: {
-    class: 'border rounded-lg bg-background p-4 shadow-sm',
+    class: 'border rounded-lg bg-background p-4 shadow-xs',
   },
 })
 export class CardComponent {}
